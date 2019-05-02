@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+const ObjectId = mongoose.Schema.Types.ObjectId;
+const Vehicle = require('./vehicle');
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -20,7 +22,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-  }
+  },
+  vehicles: [{ type: ObjectId , ref: 'Vehicle' }]
+});
+
+// Kill orphans
+userSchema.pre('remove', function(next) {
+  Vehicle.remove({user: this}).exec();
+  next();
 });
 
 const User = mongoose.model('User', userSchema);
