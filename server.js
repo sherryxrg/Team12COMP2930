@@ -30,6 +30,9 @@ let usersRouter = require('./routes/users');
 // Authentication routes
 let authRouter = require('./routes/auth');
 
+//Vehicle routes
+let vehicleRouter = require('./routes/vehicles');
+
 // Initialize App
 var app = express();
 
@@ -51,6 +54,7 @@ app.use(session({secret: process.env.SECRET}));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/vehicles', vehicleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
