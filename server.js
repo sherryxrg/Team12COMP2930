@@ -18,11 +18,17 @@ var cookieParser = require('cookie-parser');
 // Use morgan as logger
 var logger = require('morgan');
 
+// Express session middleware
+let session = require('express-session');
+
 // Index routes (static pages)
-var indexRouter = require('./routes/index');
+let indexRouter = require('./routes/index');
 
 // User routes
-var usersRouter = require('./routes/users');
+let usersRouter = require('./routes/users');
+
+// Authentication routes
+let authRouter = require('./routes/auth');
 
 // Initialize App
 var app = express();
@@ -40,9 +46,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: process.env.SECRET}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
