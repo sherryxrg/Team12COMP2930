@@ -21,11 +21,17 @@ const cookieParser = require('cookie-parser');
 // Use morgan as logger
 const logger = require('morgan');
 
+// Express session middleware
+let session = require('express-session');
+
 // Index routes (static pages)
 const indexRouter = require('./routes/index');
 
 // User routes
 const usersRouter = require('./routes/users');
+
+// Authentication routes
+let authRouter = require('./routes/auth');
 
 // Initialize App
 const app = express();
@@ -52,9 +58,14 @@ app.use(sassMiddleware({
 }));
 // Sass loader must come before static dec.
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret: process.env.SECRET,
+  currentUser: null
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
