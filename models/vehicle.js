@@ -9,6 +9,7 @@ const vehicleSchema = new mongoose.Schema({
   license_plate: {
     type: String,
     required: true,
+    unique: true
   },
   make: {
     type: String

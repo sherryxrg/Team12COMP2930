@@ -33,6 +33,9 @@ const usersRouter = require('./routes/users');
 // Authentication routes
 let authRouter = require('./routes/auth');
 
+//Vehicle routes
+let vehicleRouter = require('./routes/vehicles');
+
 // Initialize App
 const app = express();
 
@@ -66,6 +69,7 @@ app.use(session({
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/vehicles', vehicleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
