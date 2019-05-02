@@ -3,29 +3,32 @@ if (process.env.NODE_ENV == 'development') {
   require('dotenv').config();
 }
 
+// Import sass
+var sassMiddleware = require('node-sass-middleware');
+
 // Express default requires
-var createError = require('http-errors');
+const createError = require('http-errors');
 
 // Express base
-var express = require('express');
+const express = require('express');
 
 // path to reduce path strings
-var path = require('path');
+const path = require('path');
 
 // cookieParser to parse... cookies..
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 // Use morgan as logger
-var logger = require('morgan');
+const logger = require('morgan');
 
 // Express session middleware
 let session = require('express-session');
 
 // Index routes (static pages)
-let indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
 // User routes
-let usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
 
 // Authentication routes
 let authRouter = require('./routes/auth');
@@ -34,7 +37,7 @@ let authRouter = require('./routes/auth');
 let vehicleRouter = require('./routes/vehicles');
 
 // Initialize App
-var app = express();
+const app = express();
 
 // Import mongoose models & connection
 import models, { connectDb } from './models/';
@@ -48,8 +51,20 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// SASS loader
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public/stylesheets/scss'),
+  dest: path.join(__dirname, 'public/stylesheets'),
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/sass'
+}));
+// Sass loader must come before static dec.
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: process.env.SECRET}));
+app.use(session({
+  secret: process.env.SECRET,
+  currentUser: null
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
