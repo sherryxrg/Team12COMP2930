@@ -12,11 +12,13 @@ router.post('/', async (req, res) => {
     let vehicle = new models.Vehicle(req.body);
     let result = await vehicle.save();
     res.send(result);
+  } else {
+    res.send("Not logged in.");
   }
 });
 
 router.get('/new', (req, res) => {
-  res.render('new_vehicle');
+  res.render('new_vehicle', {title: 'Create a Vehicle'});
 });
 
 module.exports = router;
