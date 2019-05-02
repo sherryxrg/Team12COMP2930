@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
 
 //Login
 router.post('/', async (req, res) => {
+  console.log(req.body);
   User.findOne({ email: req.body.email }, (err, user) => {
     if (err) {
       console.error(err);
@@ -23,7 +24,8 @@ router.post('/', async (req, res) => {
       return res.status(400).send("Login failed.");
     }
     req.session.currentUser = user;
-    res.json(user);
+    console.log(req.session);
+    res.redirect('/');
   });
 });
 
