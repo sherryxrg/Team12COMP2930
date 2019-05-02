@@ -1,2 +1,20 @@
-$my-color: red;
-$other-color: blue;
+
+
+$bg-color: #44C981;
+$shadow-color: rgba(56, 56, 56, 0.1);
+$topbar-color: #2C8052;
+$clear-white: rgba(255, 255, 255, 0.5);
+
+$letter-space: 0.2em;
+
+@mixin boxshadow() {
+  
+}
+
+@mixin barstandard() {
+
+}
+
+//$drop-shadow: 
+
+/*  */
