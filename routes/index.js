@@ -16,4 +16,15 @@ router.get('/login', (req, res) => {
   res.render('login', {title: 'Login'});
 });
 
+// Dashboard
+router.get('/dashboard', (req, res) => {
+  let user = null;
+  user = req.session.currentUser;
+  if (user) {
+  res.render('dashboard', {user: user} );
+  } else {
+    res.redirect('/login');
+  }
+});
+
 module.exports = router;

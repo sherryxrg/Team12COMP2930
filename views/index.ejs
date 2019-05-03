@@ -1,3 +1,28 @@
 <%- include('header') -%>
-<h1>HI</h1>
+
+<link rel='stylesheet' href='sass/homepage.css'/>
+
+<div id="top-bar">user | ecocity</div>
+  <div id="container">
+    <div id="center-field">
+      <h1 id='title'><%= title %></h1>
+        <!-- bootstrap login form -->
+        <div class="wrapper fadeInDown">
+          <div id="formContent">
+            <!-- Tabs Titles -->
+            <br>
+            <!-- Login Form -->
+            <form>
+              <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+              <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+              <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+            <!-- Forgot Password -->
+            <div id="formFooter">
+              <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
 <%- include('footer') -%>
