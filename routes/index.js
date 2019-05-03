@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 // Login page
 router.get('/login', (req, res) => {
-  res.render('login');
+  res.render('login', {title: 'Login'});
 });
 
 // Dashboard
@@ -25,6 +25,11 @@ router.get('/dashboard', (req, res) => {
   } else {
     res.redirect('/login');
   }
+});
+
+// Register
+router.get('/register', (req, res) => {
+  res.render('register', {title: 'Register'});
 });
 
 module.exports = router;
