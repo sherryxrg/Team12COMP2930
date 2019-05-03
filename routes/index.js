@@ -32,4 +32,9 @@ router.get('/register', (req, res) => {
   res.render('register', {title: 'Register'});
 });
 
+// Payment
+router.get('/payment', (req, res) => {
+  res.render('register', {title: 'Payment'});
+});
+
 module.exports = router;
