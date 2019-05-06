@@ -29,7 +29,7 @@ router.get('/:id', async (req,res) => {
 router.delete('/:id/delete', async (req, res) => {
   Receipt.findByIdAndRemove(req.params.id, (err, receipt) => {
     if (err) return next(err);
-    res.send('Receipt deleted');
+    res.send(receipt);
   });
 });
 
