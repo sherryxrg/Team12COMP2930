@@ -45,6 +45,9 @@ let receiptRouter = require('./routes/receipts');
 //Lot routes
 let lotRouter = require('./routes/lots');
 
+//Map routes
+let mapRouter = require('./routes/maps');
+
 // Initialize App
 const app = express();
 
@@ -82,6 +85,7 @@ app.use('/vehicles', vehicleRouter);
 app.use('/companies', companyRouter);
 app.use('/receipts', receiptRouter);
 app.use('/lots', lotRouter);
+app.use('/maps', mapRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
