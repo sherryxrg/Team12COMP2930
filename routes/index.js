@@ -34,7 +34,9 @@ router.get('/register', (req, res) => {
 
 // Payment
 router.get('/payment', (req, res) => {
-  res.render('register', {title: 'Payment'});
+  res.render('payment', {title: 'Payment'});
 });
+
+
 
 module.exports = router;

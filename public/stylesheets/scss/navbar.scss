@@ -11,8 +11,14 @@
   color: white;
   text-align: right;
   font-size: 8pt;
+  margin: 0px;
 }
 
 a {
   color: white;
+}
+
+a:hover {
+  color: white;
+  font-weight: 600;
 }

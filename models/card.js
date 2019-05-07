@@ -11,9 +11,9 @@ const cardSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  card-type: {
+  card_type: {
     type: String,
-    required: true
+    //required: true
   },
   expiry: {
     type: Date,
@@ -22,7 +22,7 @@ const cardSchema = new mongoose.Schema({
   user: {
     type: ObjectId,
     ref: 'User',
-    required: true
+    //required: true
   },
 
 });

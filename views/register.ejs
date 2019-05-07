@@ -1,12 +1,23 @@
 <%- include('header') -%>
 
-<form action='/auth/register' method="POST">
-  <label>Email: </label>
-  <input type="email" name="email">
-  <br>
-  <label>Password: </label>
-  <input type="password" name="password">
-  <input type="submit">
-</form>
+<link rel='stylesheet' href='sass/register.css'/>
+<!-- navbar -->
+<%- include('navbar') -%>
+
+<div id='my-container'>
+  <div id='base-container'>
+    <div id='top-container'>
+</div>
+  <div id='bottom-container'>
+    <form action='/auth/register' method="POST">
+      <label>EMAIL: </label>
+      <input type="email" name="email">
+      <label>PASSWORD: </label>
+      <input type="password" name="password">
+      <input type="submit">
+    </form>
+  </div>
+
+</div>
 
 <%- include('footer') -%>
