@@ -36,6 +36,8 @@ let authRouter = require('./routes/auth');
 //Vehicle routes
 let vehicleRouter = require('./routes/vehicles');
 
+//Card routes
+let cardRouter = require('./routes/cards');
 //Company routes
 let companyRouter = require('./routes/companies');
 
@@ -79,9 +81,13 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/vehicles', vehicleRouter);
+<<<<<<< HEAD
+app.use('/cards', cardRouter);
+=======
 app.use('/companies', companyRouter);
 app.use('/receipts', receiptRouter);
 app.use('/lots', lotRouter);
+>>>>>>> development
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
