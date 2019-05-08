@@ -74,7 +74,7 @@ app.use(sassMiddleware({
   dest: path.join(__dirname, 'public/stylesheets'),
   debug: true,
   outputStyle: 'compressed',
-  prefix:  '/sass'
+  prefix:  '/stylesheets'
 }));
 // Sass loader must come before static dec.
 app.use('/', serveStatic('./public'));
