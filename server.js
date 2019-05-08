@@ -3,6 +3,9 @@ if (process.env.NODE_ENV == 'development') {
   require('dotenv').config();
 }
 
+// Import serve-static
+const serveStatic = require('serve-static');
+
 // Import sass
 var sassMiddleware = require('node-sass-middleware');
 
@@ -74,7 +77,7 @@ app.use(sassMiddleware({
   prefix:  '/stylesheets'
 }));
 // Sass loader must come before static dec.
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/', serveStatic('./public'));
 app.use(session({
   secret: process.env.SECRET,
   currentUser: null
