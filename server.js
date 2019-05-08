@@ -71,10 +71,11 @@ app.use(sassMiddleware({
   dest: path.join(__dirname, 'public/stylesheets'),
   debug: true,
   outputStyle: 'compressed',
-  prefix:  '/sass'
+  prefix:  '/stylesheets'
 }));
 // Sass loader must come before static dec.
 app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/', serveStatic('./public'));
 app.use(session({
   secret: process.env.SECRET,
   currentUser: null
