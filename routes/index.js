@@ -37,6 +37,11 @@ router.get('/payment', (req, res) => {
   res.render('payment', {title: 'Payment'});
 });
 
+// Edit location
+router.get('/edit_location', (req, res) => {
+  res.render('edit_location', {title: 'Edit_location'});
+});
+
 
 
 module.exports = router;

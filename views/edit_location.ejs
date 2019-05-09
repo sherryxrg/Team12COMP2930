@@ -1,12 +1,67 @@
-<%- include ('header') -%>
 <link rel='stylesheet' href='stylesheets/edit_location.css'>
+<%- include('header') %>
 
-<!-- map -->
+<div id='container'>
+
+  <div id='white-space'>
+  <!-- map -->
+  <div id="mapid"></div>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+  <script src="javascripts/map.js"></script>
+
+<!-- bottom half of page after map -->
+<div id='outline'>
+
+  <!-- vehicle, cards -->
+
+    <div id='left-div'>
+      
+      <div id='vehicle-box'>
+        <select class='dropdown'>
+          <option value='select' class='dropdown-opt'>Select Vehicle:</option>
+          <option value='Impark' class='dropdown-opt'>Lexus (DHG 0A2)</option>
+          <option value='EasyPark' class='dropdown-opt'>Acura (ETY 9H7)</option>
+          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new vehicle</a></option>
+        </select>
+      </div>
+
+      <div id='payment-box'>
+        <select class='dropdown'>
+          <option value="a" class='dropdown-opt'>Select card to payment option:</option>
+          <option value="b" class='dropdown-opt'>123</option>
+          <option value="c" class='dropdown-opt'>456</option>
+          <option value="d" class='dropdown-opt'>999</option>
+          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new card</a></option>
+        </select>
+      </div>
+      
+    </div>
+
+  <!-- current lot, parked until, type, pay -->
+  
+    <div id='right-div'>
+    
+      <h1 class='heading'>Current lot:</h1>
+        <input type='text' pattern='[a-zA-Z0-9]'>
+      <h1 class='heading'>Park until:</h1>
+        <input type='time'>
+      <h1 class='heading'>Type:</h1>
+        <select>
+          <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
+          <option value='daily' name='daily' class='dropdown-opt'>daily</option>
+        </select>
+      
+      <h1 class='heading'>Amount due:</h1>
+
+    </div>
 
 
-<!-- Select company, select lot -->
+</div>
 
+  </div>
 
+</div>
 
-
-<%- include ('footer') -%>
+<%- include('footer') %>
