@@ -9,13 +9,14 @@ const userSchema = new mongoose.Schema({
   },
   first_name: {
     type: String,
+    required: true,
   },
   last_name: {
-    type: String
+    type: String,
+    required: true,
   },
   email: {
     type: String,
-    unique: true,
     required: true,
   },
   vehicles: [{ type: ObjectId , ref: 'Vehicle' }]
@@ -24,6 +25,13 @@ const userSchema = new mongoose.Schema({
 // Kill orphans
 userSchema.pre('remove', function(next) {
   Vehicle.remove({user: this}).exec();
+  next();
+});
+
+userSchema.pre('save', function(next) {
+  this.first_name = this.first_name.toLowerCase();
+  this.last_name = this.last_name.toLowerCase();
+  this.email = this.email.toLowerCase();
   next();
 });
 

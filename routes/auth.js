@@ -8,14 +8,20 @@ const User = models.User;
 router.post('/register', async (req, res) => {
   req.body.password = Bcrypt.hashSync(req.body.password, 10);
   let user = new models.User(req.body);
-  let result = await user.save();
-  res.send(result);
+  user.save((err) => {
+    console.log(err);
+    if (err) {
+      res.redirect('/register');
+    } else {
+      req.session.currentUser = user;
+      res.redirect('/dashboard');
+    }
+  });
 });
 
 //Login
 router.post('/', async (req, res) => {
-  console.log(req.body);
-  User.findOne({ email: req.body.email }, (err, user) => {
+  User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if (err) {
       console.error(err);
     }
@@ -24,9 +30,14 @@ router.post('/', async (req, res) => {
       return res.status(400).send("Login failed.");
     }
     req.session.currentUser = user;
-    console.log(req.session);
-    res.redirect('/');
+    res.redirect('/dashboard');
   });
+});
+
+//Logout
+router.get('/logout', (req, res) => {
+  req.session.currentUser = null;
+  res.redirect('/');
 });
 
 module.exports = router;

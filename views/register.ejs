@@ -1,8 +1,6 @@
 <%- include('header') -%>
 
-<link rel='stylesheet' href='sass/register.css'/>
-<!-- navbar -->
-<%- include('navbar') -%>
+<link rel='stylesheet' href='stylesheets/register.css'/>
 
 <div id='my-container'>
   <div id='base-container'>
@@ -10,10 +8,19 @@
 </div>
   <div id='bottom-container'>
     <form action='/auth/register' method="POST">
-      <label>EMAIL: </label>
+      <label>First Name:</label>
+      <input type="text" name="first_name">
+      <br/>
+      <label>Last Name:</label>
+      <input type="text" name="last_name">
+      <br/>
+      <label>Email:</label>
       <input type="email" name="email">
-      <label>PASSWORD: </label>
+      <br/>
+      <label>Password:</label>
       <input type="password" name="password">
+      <br/>
+
       <input type="submit">
     </form>
   </div>

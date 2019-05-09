@@ -1,50 +1,12 @@
 <%- include('header') -%>
 
-<!-- use this <%= user %> for the current user -->
-<link rel='stylesheet' href='sass/dashboard.css'/>
+<link rel='stylesheet' href='stylesheets/dashboard.css'/>
 <title>Dashboard</title>
-     <link rel="stylesheet" type="text/css"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<body>
-        
-        <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Parked</a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li class="active"><a href="#">Dashboard</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-       <li><a href="#">Signed <i class="fa fa-user-plus"></i></a></li>
-      
-      </ul>
-    </div>
-  </div>
- </nav>
-        
-        
-        
-        
-        
-        
-        <div class="container">
-        <div class="jumbotron">
-  <h2 class="text-center">Welcome Back, Tyler</h2>
+    <div class="jumbotron">
+      <h2 class="text-center">Welcome Back, <%= user.first_name %></h2>
             
-          <img src="https://www.google.com/maps/vt/data=RzSEToXb49jE3iMe9wbwXKHAjX7U0Px3JlQT0AnCf4dl6gYpHGMhzsF3Ej99k_DqJjKDGrhor3BHLP1W-ycrWXG35T2ZQjP93yqb5cj-af8avL__FsVu5ugiLq0KaOcbpEdt6liQ8rBnZygo401zS1whn6rF149Xq_bAyO4r8pNNRV1vgOl9OCurva-A7F1HYpsxmWslaxIvAUHntySszKezgqpy44U" class="img-fluid" alt="Responsive image">
+      <img src="https://www.google.com/maps/vt/data=RzSEToXb49jE3iMe9wbwXKHAjX7U0Px3JlQT0AnCf4dl6gYpHGMhzsF3Ej99k_DqJjKDGrhor3BHLP1W-ycrWXG35T2ZQjP93yqb5cj-af8avL__FsVu5ugiLq0KaOcbpEdt6liQ8rBnZygo401zS1whn6rF149Xq_bAyO4r8pNNRV1vgOl9OCurva-A7F1HYpsxmWslaxIvAUHntySszKezgqpy44U" class="img-fluid" alt="Responsive image">
   <hr class="my-4">
   
   <a class="btn btn-primary btn-lg" href="#" role="button">Change lots</a>
@@ -107,21 +69,4 @@
     </div>
 
         </div>
-        
-         <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    
-   <script type="text/javascript"  src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        
-        
-   
-    
-    </body>
-</html>
-
-  
-
-
-
-
-
 <%- include('footer') -%>
