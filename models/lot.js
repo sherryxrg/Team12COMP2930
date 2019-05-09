@@ -22,12 +22,10 @@ const lotSchema = new mongoose.Schema({
   },
   rates: {
     daily: {
-      cost: Number, 
+      until: Date,
+      cost: Number 
     },
-    hourly: {
-      endtime: Date,
-      cost: Number,
-    }
+    hourly: Number
   }
 });
 
@@ -36,18 +34,17 @@ const Lot = mongoose.model('Lot', lotSchema);
 
 export default Lot;
 
-
 function findCost(){ 
-  var startTime = new Date();
+  var startTime = new Date(); //input current time
   var endTime = new Date(this.lotSchema.rates.hourly.endtime);
-  var startHour = startTime.getHours();
+  var startHour = startTime.getHours(); 
   var startMin = startTime.getMinutes();
   var endHour = endTimeTime.getHours();
   var endMin = endTime.getMinutes();
   
-  var parkTime = (endHour * 60 + endMin) - (startHour * 60 + startHour);
-  var hourlyTotal = parkTime * this.lotSchema.rates.hourly.cost;
-  if (hourlyTotal < dailyCost){
+  var parkTime = (endHour * 60 + endMin) - (startHour * 60 + startHour); //End time minus start time
+  var hourlyTotal = parkTime * this.lotSchema.rates.hourly;
+  if (hourlyTotal < dailyCost){ // returns cheaper option
     return hourlyTotal;
   } else {
     return this.lotSchema.rates.daily.cost;
