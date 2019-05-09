@@ -1,15 +1,17 @@
 // for homepage.scss
     $bg-color: #44C981;
-    $shadow-color: rgba(56, 56, 56, 0.1);
+    $shadow-color: rgba(56, 56, 56, 0.15);
     $topbar-color: #2C8052;
     $clear-white: rgba(255, 255, 255, 0.5);
     $stgrey: #ededed;
+    $dropdown-hover: #e2e2e2;
+
 
     $letter-space: 0.2em;
 
 
     @mixin boxshadow() {
-      box-shadow: 2px 2px #000000;
+      box-shadow: 0px 4px 15px $shadow-color;
     }
 
     @mixin barstandard() {

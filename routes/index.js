@@ -3,7 +3,7 @@ const router = express.Router();
 
 // Home page
 router.get('/', function(req, res, next) {
-  res.render('landing', { title: 'Parked', user: req.session.currentUser });
+  res.render('index', { title: 'Parked', user: req.session.currentUser });
 });
 
 // Login page

@@ -1,72 +1,67 @@
-<%- include('header') -%>
+<link rel='stylesheet' href='stylesheets/edit_location.css'>
+<%- include('header') %>
 
-<link rel='stylesheet' href='stylesheets/dashboard.css'/>
-<title>Dashboard</title>
-  <div class="container">
-    <div class="jumbotron">
-      <h2 class="text-center">Welcome Back, <%= user.first_name %></h2>
-            
-      <img src="https://www.google.com/maps/vt/data=RzSEToXb49jE3iMe9wbwXKHAjX7U0Px3JlQT0AnCf4dl6gYpHGMhzsF3Ej99k_DqJjKDGrhor3BHLP1W-ycrWXG35T2ZQjP93yqb5cj-af8avL__FsVu5ugiLq0KaOcbpEdt6liQ8rBnZygo401zS1whn6rF149Xq_bAyO4r8pNNRV1vgOl9OCurva-A7F1HYpsxmWslaxIvAUHntySszKezgqpy44U" class="img-fluid" alt="Responsive image">
-  <hr class="my-4">
-  
-  <a class="btn btn-primary btn-lg" href="#" role="button">Change lots</a>
-</div>
-        </div>
-        <hr>
-        
-    
-        <div class="content">
-        <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Favourite Lots
-  </button>
-  <div class="dropdown-menu" id="my_centerd_buttons">
-    <a class="dropdown-item" href="#">#5623</a>
-      <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">#7894</a>
-      <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">#6712</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">#8945</a>
-  </div>
-</div>
-            <br>
-        <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Choose liscence
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#"></a>
+<div id='container'>
+
+  <div id='white-space'>
+  <!-- map -->
+  <div id="mapid"></div>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+  crossorigin=""></script>
+  <script src="javascripts/map.js"></script>
+
+<!-- bottom half of page after map -->
+<div id='outline'>
+
+  <!-- vehicle, cards -->
+
+    <div id='left-div'>
       
+      <div id='vehicle-box'>
+        <select class='dropdown'>
+          <option value='select' class='dropdown-opt'>Select Vehicle:</option>
+          <option value='Impark' class='dropdown-opt'>Lexus (DHG 0A2)</option>
+          <option value='EasyPark' class='dropdown-opt'>Acura (ETY 9H7)</option>
+          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new vehicle</a></option>
+        </select>
+      </div>
+
+      <div id='payment-box'>
+        <select class='dropdown'>
+          <option value="a" class='dropdown-opt'>Select card to payment option:</option>
+          <option value="b" class='dropdown-opt'>123</option>
+          <option value="c" class='dropdown-opt'>456</option>
+          <option value="d" class='dropdown-opt'>999</option>
+          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new card</a></option>
+        </select>
+      </div>
       
-    <a class="dropdown-item" href="#">HM 8945</a>
-       <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">LA 4512</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">LV 5612</a>
-  </div>
-</div>
-        
-            <br>
-        <div class="btn-group">
-  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Payment Method
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Visa Card</a>
-       <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Debit Card </a>
-       <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Master Card</a>
-      <a
-   
-  </div>
-</div>
-
-    <br>
-
-<button type="button" class="btn btn-success">Pay</button>
     </div>
 
-        </div>
-<%- include('footer') -%>
+  <!-- current lot, parked until, type, pay -->
+  
+    <div id='right-div'>
+    
+      <h1 class='heading'>Current lot:</h1>
+        <input type='text' pattern='[a-zA-Z0-9]'>
+      <h1 class='heading'>Park until:</h1>
+        <input type='time'>
+      <h1 class='heading'>Type:</h1>
+        <select>
+          <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
+          <option value='daily' name='daily' class='dropdown-opt'>daily</option>
+        </select>
+      
+      <h1 class='heading'>Amount due:</h1>
+
+    </div>
+
+
+</div>
+
+  </div>
+
+</div>
+
+<%- include('footer') %>
