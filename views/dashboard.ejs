@@ -1,4 +1,4 @@
-<link rel='stylesheet' href='stylesheets/edit_location.css'>
+<link rel='stylesheet' href='stylesheets/dashboard.css'>
 <%- include('header') %>
 
 <div id='container'>
@@ -21,39 +21,68 @@
       <div id='vehicle-box'>
         <select class='dropdown'>
           <option value='select' class='dropdown-opt'>Select Vehicle:</option>
-          <option value='Impark' class='dropdown-opt'>Lexus (DHG 0A2)</option>
-          <option value='EasyPark' class='dropdown-opt'>Acura (ETY 9H7)</option>
-          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new vehicle</a></option>
+          <% for (var i = 0; i < vehicles.length; i++) { %>
+            <option value=<%= vehicles[i] %> class="dropdown-opt">
+              <%= vehicles[i] %>
+            </option>
+          <% } %>
+          <option value='newvehicle' class='dropdown-opt'><a href='/index'>+ Add a new vehicle</a></option>
         </select>
       </div>
 
       <div id='payment-box'>
         <select class='dropdown'>
-          <option value="a" class='dropdown-opt'>Select card to payment option:</option>
-          <option value="b" class='dropdown-opt'>123</option>
-          <option value="c" class='dropdown-opt'>456</option>
-          <option value="d" class='dropdown-opt'>999</option>
-          <option value='newcar' class='dropdown-opt'><a href='#'>+ Add a new card</a></option>
+        <option value='select' class='dropdown-opt'>Select Card:</option>
+        <% for (var i = 0; i < cards.length; i++) { %>
+            <option value=<%= cards[i] %> class="dropdown-opt">
+              <%= cards[i] %>
+            </option>
+          <% } %>
+          <option value='newcard' class='dropdown-opt'><a href='/index'>+ Add a new card</a></option>
         </select>
+      </div>
+
+      <div id='current-lot'>
+        <h1 class='heading'>Current lot:</h1>
+          <input type='text' pattern='[a-zA-Z0-9]'>
+            <div id='lot-validation'>
+              <p>If lot does not exist in database, display error here.</p>
+            </div>
       </div>
       
     </div>
 
-  <!-- current lot, parked until, type, pay -->
+<!-- parked until, type, pay -->
   
     <div id='right-div'>
-    
-      <h1 class='heading'>Current lot:</h1>
-        <input type='text' pattern='[a-zA-Z0-9]'>
-      <h1 class='heading'>Park until:</h1>
-        <input type='time'>
-      <h1 class='heading'>Type:</h1>
-        <select>
-          <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
-          <option value='daily' name='daily' class='dropdown-opt'>daily</option>
-        </select>
       
-      <h1 class='heading'>Amount due:</h1>
+      <div id='time-calc'>
+        <h1 class='heading'>How many hours would you like to park for?</h1>
+          <input id='parking-time' type='number'>
+          <input type='submit' value='check price'>
+          <script> var hours = document.getElementById("parking-time").value; </script>
+          <p><script> document.write(hours) </script></p>
+      <div>
+
+      <!-- if HOURLY is selected, make the time input REQUIRED -->
+      <!-- if DAILY is selected, display start, end time -->
+      <div id='rate-type'>
+        <h1 class='heading'>Type:</h1>
+          <select id="check-input">
+            <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
+            <option value='daily' name='daily' class='dropdown-opt'>daily</option>
+          </select>
+      </div>
+
+      <!-- calculate hourly rates if HOURLY selected, display daily if DAILY selected  -->
+      <div id='payment'>
+        <h1 class='heading'>Amount due:</h1>
+            <h1 class='heading'>HOURLY:</h1>
+            <!-- need to multiply by hours entered above -->
+            <%= ratesHourly[0]%>
+            <h1 class='heading'>DAILY:</h1>
+            <%= ratesDaily[0] %>
+      </div>  
 
     </div>
 

@@ -12,7 +12,7 @@ body {
 
 #container {
   background-color: $bg-color;
-  height: calc(100vh - 20px);
+  height: calc(100vh - 40px);
 }
 
 #title {
@@ -125,8 +125,6 @@ h2.active {
   border-bottom: 2px solid $topbar-color;
 }
 
-
-
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset]  {
@@ -163,7 +161,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -184,15 +182,14 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=text], input[type=password]:focus {
   background-color: #fff;
   border-bottom: 2px solid #2fb86c;
 }
 
-input[type=text]:placeholder {
+input[type=text], input[type=password]:placeholder {
   color: #cccccc;
 }
-
 
 
 /* ANIMATIONS */
