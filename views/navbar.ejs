@@ -1,3 +1,20 @@
-<link rel='stylesheet' href='stylesheets/navbar.css'/>
-
-<div id="nav-bar"> Logged in as:  | <a href='#'>Dashboard</a> | <a href='#'>About Us</a></div>
+<nav class="navbar navbar-expand-sm bg-light">
+  <a class="navbar-brand" href="/">Parked</a>
+  <ul class="navbar-nav">
+    <% if (typeof user == 'undefined' || user == null) { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Log In</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+    <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/auth/logout">Log Out</a>
+      </li>
+    <% } %>
+  </ul>
+</nav>

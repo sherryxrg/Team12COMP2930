@@ -1,33 +1,16 @@
 <%- include('header') -%>
+<link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="content">
+        <h1>Parked</h1>
+        <h3>The only app you need for parking</h3>
+        <hr>
+        <button class="btn btn-default btn-lg"><i class="fa fa-paw fa-fw"></i> Get Started!</button>
 
-<link rel='stylesheet' href='stylesheets/homepage.css'/>
-
-<!-- navbar -->
-<%- include('navbar') -%>
-
-  <div id="container">
-    <div id="center-field">
-      <h1 id='title'><%= title %></h1>
-        <!-- bootstrap login form -->
-        <div class="wrapper fadeInDown">
-          <div id="formContent">
-            <!-- Tabs Titles -->
-            <br>
-            <!-- Login Form -->
-            <form action='/auth/register' method='POST' >
-              <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-              <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-              <input type="submit" class="fadeIn fourth" value="Log In">
-              <input type="submit" class="fadeIn fourth" value="Sign-up">
-            </form>
-            <!-- Forgot Password -->
-            <div id="formFooter">
-              <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>
-          </div>
-        </div>
+      </div>
     </div>
-
+  </div>
 </div>
-
 <%- include('footer') -%>

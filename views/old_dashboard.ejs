@@ -1,0 +1,72 @@
+<%- include('header') -%>
+
+<link rel='stylesheet' href='stylesheets/dashboard.css'/>
+<title>Dashboard</title>
+  <div class="container">
+    <div class="jumbotron">
+      <h2 class="text-center">Welcome Back, <%= user.first_name %></h2>
+            
+      <img src="https://www.google.com/maps/vt/data=RzSEToXb49jE3iMe9wbwXKHAjX7U0Px3JlQT0AnCf4dl6gYpHGMhzsF3Ej99k_DqJjKDGrhor3BHLP1W-ycrWXG35T2ZQjP93yqb5cj-af8avL__FsVu5ugiLq0KaOcbpEdt6liQ8rBnZygo401zS1whn6rF149Xq_bAyO4r8pNNRV1vgOl9OCurva-A7F1HYpsxmWslaxIvAUHntySszKezgqpy44U" class="img-fluid" alt="Responsive image">
+  <hr class="my-4">
+  
+  <a class="btn btn-primary btn-lg" href="#" role="button">Change lots</a>
+</div>
+        </div>
+        <hr>
+        
+    
+        <div class="content">
+        <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Favourite Lots
+  </button>
+  <div class="dropdown-menu" id="my_centerd_buttons">
+    <a class="dropdown-item" href="#">#5623</a>
+      <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">#7894</a>
+      <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">#6712</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">#8945</a>
+  </div>
+</div>
+            <br>
+        <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Choose liscence
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#"></a>
+      
+      
+    <a class="dropdown-item" href="#">HM 8945</a>
+       <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">LA 4512</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">LV 5612</a>
+  </div>
+</div>
+        
+            <br>
+        <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Payment Method
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Visa Card</a>
+       <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Debit Card </a>
+       <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Master Card</a>
+      
+   
+  </div>
+</div>
+
+    <br>
+
+<button type="button" class="btn btn-success">Pay</button>
+    </div>
+
+        </div>
+<%- include('footer') -%>
