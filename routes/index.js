@@ -37,6 +37,38 @@ router.get('/payment', (req, res) => {
   res.render('payment', {title: 'Payment'});
 });
 
+//Receipt Test
+import models from '../models/';
+const Receipt = models.Receipt;
+const mongoose = require("mongoose");
 
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true
+});
+
+router.get('/current', async (req, res) => {
+  let date = new Date();
+  Receipt.find({
+    end_time: {
+      $gt: date,
+    }
+  }).sort({end_time: -1}).exec( (err, docs) => {
+    if (err) return (err);
+    const receipt = docs[0];
+    res.render('receipt', {
+      title: 'Current Session',
+      receipt
+    });
+  });
+});
+
+router.get('/payment_success', async (req, res) => {
+  const receipts = await Receipt.find();
+  const receipt = receipts[0];
+  res.render('receipt', {
+    title: 'Receipt',
+    receipt
+  });
+});
 
 module.exports = router;
