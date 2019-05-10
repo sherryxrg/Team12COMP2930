@@ -16,8 +16,11 @@
     "express-session": "^1.16.1",
     "http-errors": "~1.6.2",
     "mongoose": "^5.5.5",
+    "mongoose-auto-increment": "^5.0.1",
+    "mongoose-currency": "^0.2.0",
     "morgan": "~1.9.0",
     "node-sass-middleware": "^0.11.0",
+    "sass": "^1.20.1",
     "serve-static": "^1.14.0"
   },
   "devDependencies": {

@@ -1,5 +1,13 @@
+require('dotenv').config();
 import mongoose from 'mongoose';
 const ObjectId = mongoose.Schema.Types.ObjectId;
+require('mongoose-currency').loadType(mongoose);
+var Currency = mongoose.Types.Currency;
+const autoIncrement = require('mongoose-auto-increment');
+
+var connection = mongoose.createConnection(process.env.DATABASE_URL);
+ 
+autoIncrement.initialize(connection);
 
 const receiptSchema = new mongoose.Schema({
   license_plate: {
@@ -17,16 +25,30 @@ const receiptSchema = new mongoose.Schema({
   user: {
     type: ObjectId,
     ref: 'User',
-    required: true
+    //required: true
   },
   lot: {
     type: ObjectId,
     ref: 'Lot',
-    required: true
+    //required: true
   },
-
+  card: {
+    type: ObjectId,
+    ref: 'Card',
+    //required: true
+  },
+  price: {
+    type: Currency,
+    get: getPrice,
+    required: true
+  }
 });
 
+function getPrice(num) {
+  return (num/100).toFixed(2);
+}
+
+receiptSchema.plugin(autoIncrement.plugin, 'Receipt');
 const Receipt = mongoose.model('Receipt', receiptSchema);
 
 export default Receipt;
