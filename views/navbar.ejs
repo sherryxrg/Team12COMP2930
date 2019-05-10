@@ -1,20 +1,21 @@
-<nav class="navbar navbar-expand-sm bg-light">
-  <a class="navbar-brand" href="/">Parked</a>
-  <ul class="navbar-nav">
+<link rel='stylesheet' href='stylesheets/navbar.css'>
+
+<nav id='nav-bar'>
+  <div id='brand' class='section'><a href="/">Parked</a></div>
     <% if (typeof user == 'undefined' || user == null) { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/login">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/register">Register</a>
-      </li>
-    <% } else { %>
-      <li class="nav-item">
-        <a class="nav-link" href="/dashboard">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/auth/logout">Log Out</a>
-      </li>
+        <div id='login' class='section'>
+          <a href="/login">Log In</a>
+        </div>
     <% } %>
-  </ul>
+  <div id='register' class='section'>
+      <a href="/register">Register</a>
+  </div>
+  <div id='dashboard' class='section'>
+      <a href="/dashboard">Dashboard</a>
+  </div>
+      
+        <div id='logout' class='section'>
+          <a href="/auth/logout">Logout</a>
+        </div>
+      
 </nav>
