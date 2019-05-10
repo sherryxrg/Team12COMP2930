@@ -21,12 +21,12 @@
     "morgan": "~1.9.0",
     "node-sass-middleware": "^0.11.0",
     "sass": "^1.20.1",
-    "serve-static": "^1.14.0"
-  },
-  "devDependencies": {
+    "serve-static": "^1.14.0",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@babel/register": "^7.4.4",
+    "@babel/register": "^7.4.4"
+  },
+  "devDependencies": {
     "dotenv": "^7.0.0",
     "nodemon": "^1.18.11"
   }
