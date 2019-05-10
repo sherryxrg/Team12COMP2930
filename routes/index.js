@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+import models from '../models/';
+const Receipt = models.Receipt;
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true
+});
+
 // Home page
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Parked', user: req.session.currentUser });
@@ -18,7 +26,19 @@ router.get('/dashboard', (req, res) => {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-    res.render('dashboard', {user, title: "Dashboard"} );
+    res.render('dashboard', {user, title: "Dashboard", vehicles: ["vehicle 1", "vehicle 2", "vehicle 3"], 
+    cards: ["card 1", "card 2", "card 3"], ratesHourly: ["11", "22", "33"], ratesDaily: ["99", "111", "222"]} );
+  } else {
+    res.redirect('/login');
+  }
+});
+
+// Landing
+router.get('/landing', (req, res) => {
+  let user = null;
+  user = req.session.currentUser;
+  if (user) {
+  res.render('landing', {user: user, title: "Landing"} );
   } else {
     res.redirect('/login');
   }
@@ -32,6 +52,34 @@ router.get('/register', (req, res) => {
 // Payment
 router.get('/payment', (req, res) => {
   res.render('payment', {title: 'Payment'});
+});
+
+
+// Current Receipt
+router.get('/current', async (req, res) => {
+  let date = new Date();
+  Receipt.find({
+    end_time: {
+      $gt: date,
+    }
+  }).sort({end_time: -1}).exec( (err, docs) => {
+    if (err) return (err);
+    const receipt = docs[0];
+    res.render('receipt', {
+      title: 'Current Session',
+      receipt
+    });
+  });
+});
+
+// Payment Success Page
+router.get('/payment_success', async (req, res) => {
+  const receipts = await Receipt.find();
+  const receipt = receipts[0];
+  res.render('receipt', {
+    title: 'Receipt',
+    receipt
+  });
 });
 
 function titleize(s) {
