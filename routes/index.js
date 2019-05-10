@@ -27,6 +27,17 @@ router.get('/dashboard', (req, res) => {
   }
 });
 
+// Landing
+router.get('/landing', (req, res) => {
+  let user = null;
+  user = req.session.currentUser;
+  if (user) {
+  res.render('landing', {user: user, title: "Landing"} );
+  } else {
+    res.redirect('/login');
+  }
+});
+
 // Register
 router.get('/register', (req, res) => {
   res.render('register', {title: 'Register'});
