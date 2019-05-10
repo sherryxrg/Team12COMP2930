@@ -3,29 +3,59 @@ if (process.env.NODE_ENV == 'development') {
   require('dotenv').config();
 }
 
+// Import serve-static
+const serveStatic = require('serve-static');
+
+// Import sass
+var sassMiddleware = require('node-sass-middleware');
+
 // Express default requires
-var createError = require('http-errors');
+const createError = require('http-errors');
 
 // Express base
-var express = require('express');
+const express = require('express');
 
 // path to reduce path strings
-var path = require('path');
+const path = require('path');
 
 // cookieParser to parse... cookies..
-var cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 // Use morgan as logger
-var logger = require('morgan');
+const logger = require('morgan');
+
+// Express session middleware
+let session = require('express-session');
 
 // Index routes (static pages)
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
 // User routes
-var usersRouter = require('./routes/users');
+const usersRouter = require('./routes/users');
+
+// Authentication routes
+let authRouter = require('./routes/auth');
+
+//Vehicle routes
+let vehicleRouter = require('./routes/vehicles');
+
+//Card routes
+let cardRouter = require('./routes/cards');
+
+//Company routes
+let companyRouter = require('./routes/companies');
+
+//Receipt routes
+let receiptRouter = require('./routes/receipts');
+
+//Lot routes
+let lotRouter = require('./routes/lots');
+
+//Map routes
+let mapRouter = require('./routes/maps');
 
 // Initialize App
-var app = express();
+const app = express();
 
 // Import mongoose models & connection
 import models, { connectDb } from './models/';
@@ -39,10 +69,31 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// SASS loader
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public/stylesheets/scss'),
+  dest: path.join(__dirname, 'public/stylesheets'),
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/stylesheets'
+}));
+// Sass loader must come before static dec.
+app.use('/', serveStatic('./public'));
+app.use(session({
+  secret: process.env.SECRET,
+  currentUser: null
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
+app.use('/vehicles', vehicleRouter);
+app.use('/cards', cardRouter);
+app.use('/companies', companyRouter);
+app.use('/receipts', receiptRouter);
+app.use('/lots', lotRouter);
+app.use('/maps', mapRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
