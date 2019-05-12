@@ -2,9 +2,6 @@
 
 <link rel='stylesheet' href='stylesheets/receipt.css'/>
 
-<!-- navbar -->
-<%- include('navbar') -%>
-
   <div id="container">
     <div id="center-field">
         <div class="wrapper fadeInDown">
@@ -15,7 +12,7 @@
             <br>
             <!-- Receipt Info -->
             <div>
-                <div class="label"><b>Receipt Number:</b> <%= receipt._id %></div>
+              <div class="label"><b>Receipt Number:</b> <%= receipt._id %></div>
               <div class="label"><b>License Plate:</b> <%= receipt.license_plate %></div>
               <div class="label"><b>Lot:</b> ImPark #1234</div>
               <div class="label"><b>Date:</b> May 8, 2019</div>
