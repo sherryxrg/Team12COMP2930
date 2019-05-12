@@ -92,10 +92,7 @@ app.use('/cards', cardRouter);
 app.use('/companies', companyRouter);
 app.use('/receipts', receiptRouter);
 app.use('/lots', lotRouter);
-<<<<<<< HEAD
 app.use('/maps', mapRouter);
-=======
->>>>>>> aaeee47eca818535d27fa53d4bd1676d960f0f07
 
 
 // catch 404 and forward to error handler
