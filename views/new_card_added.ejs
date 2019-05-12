@@ -1,0 +1,16 @@
+<%- include('header') -%>
+
+<link rel='stylesheet' href='stylesheets/new_vehicle.css'/>
+
+<div id="center-field">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="label"><b>Name:</b> <%= newCard.name %></div>
+      <div class="label"><b>Number:</b> <%= newCard.number %></div>
+      <div class="label"><b>Expiry Month:</b> <%= newCard.expiry_month %></div>
+      <div class="label"><b>Expiry Year:</b> <%= newCard.expiry_year %></div>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') -%>
