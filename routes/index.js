@@ -70,17 +70,17 @@ router.get('/payment', async (req, res) => {
   if (card) {
     let c = await Card.findById(card);
     res.render('payment', {
-      title: "Payment",
+      title: 'Payment',
       card: c,
     });
+
+    let vehicle = req.query.vehicle;
+    console.log(vehicle);
+    if (vehicle) {
+      let v = await Vehicles.findById(vehicle);
+    }
   }
 
-  let vehicle = req.query.vehicle;
-  console.log(vehicle);
-  if (vehicle) {
-    let v = await Vehicle.findById(vehicle);
-  }
-  
 });
 
 //Create Receipt
