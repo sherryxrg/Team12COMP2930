@@ -7,9 +7,10 @@ const cardSchema = new mongoose.Schema({
     type: String,
   },
   number: {
-    type: Number,
+    type: String,
     required: true,
-    unique: true
+    unique: true,
+    get: obfuscate
   },
   cvc: {
     type: Number,
@@ -33,6 +34,10 @@ const cardSchema = new mongoose.Schema({
   },
 
 });
+
+function obfuscate (cc) {
+  return '****-****-****-' + cc.slice(cc.length-4, cc.length);
+}
 
 const Card = mongoose.model('Card', cardSchema);
 

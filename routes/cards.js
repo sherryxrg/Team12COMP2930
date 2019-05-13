@@ -47,7 +47,7 @@ router.get('/all', async (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.render('payment', {title: 'Add a new payment method'});
+  res.render('new_card', {title: 'Add a new payment method'});
 });
 
 module.exports = router;
