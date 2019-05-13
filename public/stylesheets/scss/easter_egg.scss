@@ -27,7 +27,6 @@
 // explosion container
 .particles-container {
   position: absolute;
-  user-select: none;
   pointer-events: none;
 }
 
@@ -46,6 +45,22 @@
   }
 }
 
+.remove{
+  opacity: 0;
+  animation-duration: 4s;
+  
+}
+
+
+
 .car {
-	background-attachment: fixed;
+  background-attachment: fixed;
+  left: 43vw;
+  top: 10px;
+  position: absolute;
+  
+  
+}
+select{
+  opacity: 0; 
 }

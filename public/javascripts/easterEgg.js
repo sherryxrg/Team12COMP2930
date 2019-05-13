@@ -1,12 +1,13 @@
-var count = 0;
 $(document).ready(function () {
+  var count = 0;
   $(".car").on( "click", function(e) {
+     
     e.preventDefault();
+    console.log(".car");
     $('.car').addClass('animated');
     setTimeout(() => { $('.car').removeClass('animated');}, 600);
-    count++;
-    
- })
+})
+  
 
 const options = {
   radius: 100, // explosion size
