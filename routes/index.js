@@ -64,8 +64,23 @@ router.get('/register', (req, res) => {
 });
 
 // Payment
-router.get('/payment', (req, res) => {
-  res.render('payment', {title: 'Payment'});
+router.get('/payment', async (req, res) => {
+  let card = req.query.card;
+  console.log(req.query.card);
+  if (card) {
+    let c = await Card.findById(card);
+    res.render('payment', {
+      title: "Payment",
+      card: c,
+    });
+  }
+
+  let vehicle = req.query.vehicle;
+  console.log(vehicle);
+  if (vehicle) {
+    let v = await Vehicle.findById(vehicle);
+  }
+  
 });
 
 //Create Receipt
