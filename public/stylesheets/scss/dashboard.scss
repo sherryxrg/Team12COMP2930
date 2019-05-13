@@ -9,20 +9,17 @@
 
 #container {
   font-family: 'montserrat';
-  background: #667db6;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  box-shadow: inset 0px 10px 10px -10px rgb(228, 228, 228), inset 0px -10px 10px -10px rgb(228, 228, 228); ;
   margin: 0px;
   padding: 0px;
   width: 100vw;
   height: calc(100vh - 60px);
+  @include allbg();
 }
 
 #white-space {
   background-color: white;
   width: 800px;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   margin: 0 auto;
   padding: 0px;
   @include diffuseshadow();
@@ -38,7 +35,6 @@
 
 
 //boxes
-
 .boxes {
   @include diffusecomponent();
   padding: 10px;
@@ -47,6 +43,10 @@
 
 .subhead {
   display: inline-block;
+}
+
+.links {
+  text-align: left;
 }
 
 #left-div {
