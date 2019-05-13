@@ -1,4 +1,36 @@
-// for homepage.scss
+
+
+@mixin narrowshadow() {
+  box-shadow: 16px 20px 12px #5F6368;
+}
+
+//diffuse shadow
+@mixin diffuseshadow() {
+  box-shadow: 0px 4px 20px 1px rgba(44, 56, 110, 0.4);
+}
+
+//for div-boxes
+@mixin diffusecomponent() {
+  box-shadow: 1px 4px 10px 1px rgba(44, 56, 110, 0.15);
+}
+
+//for title drop-shadow
+@mixin headingshadow() {
+  text-shadow: 0px 4px 15px #5F6368;
+}
+
+@mixin gentleoutline() {
+  border-style: solid;
+  border-color: rgba(44, 56, 110, 0.3);
+  border-width: 0.10px;
+}
+
+$navbar-title: #667db6;
+$navbar-title-1: #415177;
+$navbar-title-2: #303d5a;
+
+
+// ------------ OLD CSS STUFF
     $bg-color: #44C981;
     $shadow-color: rgba(56, 56, 56, 0.15);
     $topbar-color: #2C8052;
@@ -6,17 +38,6 @@
     $stgrey: #ededed;
     $dropdown-hover: #e2e2e2;
     $darker-green: rgb(31, 90, 57);
-
-
     $letter-space: 0.2em;
 
-
-    @mixin boxshadow() {
-      box-shadow: 0px 4px 15px $shadow-color;
-    }
-
-    @mixin barstandard() {
-
-    }
-
-// for dashboard.scss
+  

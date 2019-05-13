@@ -1,13 +1,1 @@
-body, html {
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
+@import url("https://fonts.googleapis.com/css?family=Montserrat");@import url("https://fonts.googleapis.com/css?family=Karla:400,700");*{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}body,html{height:100%;width:100%}body{margin:0px;padding:0;font-family:'Montserrat'}a{color:black}footer{height:20px;font-size:8pt;width:100vw;margin:0px;bottom:0;padding-left:10px;padding-top:2px;padding-bottom:2px;background-color:rgba(255,255,255,0.1);color:white;position:fixed;text-align:left}
