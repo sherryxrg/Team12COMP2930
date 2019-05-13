@@ -1,18 +1,12 @@
 @import 'vars';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-* {
-  font-family: 'Montserrat';
-}
-
-body {
-  margin: 0px;
-  padding: 0px;
-}
 
 #container {
-  background-color: $bg-color;
   height: calc(100vh - 40px);
+  background: #667db6;  /* fallback for old browsers */
+  @include allbg();
 }
 
 #title {
@@ -26,59 +20,23 @@ body {
 }
 
 #center-field {
-  width: 70%;
-  height: 80vh;
+  width: 100%;
+  height: 300px;;
   margin: 0 auto;
   text-align: center;
 }
 
-#logo {
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-  border-style: solid;
-  border-color: white;
-}
-
-footer {
-  height: 20px;
-  font-size: 8pt;
-  width: 100%;
-  bottom: 0;
-  padding-left: 10px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-color: $clear-white;
-  color: $topbar-color;
-  position: fixed;
-}
-
-/* bootstrap login form --------------- */
-
-/* BASIC */
-
-html {
-  background-color: $bg-color;
-}
-
 a {
-  color: $topbar-color;
+  color: $navbar-title;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
 }
 
-h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
-  color: #cccccc;
-}
 
-/* STRUCTURE */
+
+/* bootstrap login-form */
+
 
 .wrapper {
   display: flex;
@@ -106,29 +64,16 @@ h2 {
 #formFooter {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
-  padding: 25px;
+  padding: 20px;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
 
-
-
-/* TABS */
-
-h2.inactive {
-  color: #cccccc;
-}
-
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid $topbar-color;
-}
-
-/* FORM TYPOGRAPHY*/
+//FORM TYPOGRAPHY
 
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: $topbar-color;
+  background-color: $navbar-title-1;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -141,7 +86,7 @@ input[type=button], input[type=submit], input[type=reset]  {
   box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
+  margin: 5px 20px 20px 20px;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
@@ -150,7 +95,7 @@ input[type=button], input[type=submit], input[type=reset]  {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color:$topbar-color;
+  background-color:$navbar-title-2;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -182,19 +127,48 @@ input[type=text], input[type=password] {
   border-radius: 5px 5px 5px 5px;
 }
 
+#password {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
 input[type=text], input[type=password]:focus {
   background-color: #fff;
-  border-bottom: 2px solid #2fb86c;
+  border-bottom: 2px solid $navbar-title-1;
+}
+
+#password {
+  background-color: #fff;
+  border-bottom: 2px solid $navbar-title-1;
 }
 
 input[type=text], input[type=password]:placeholder {
   color: #cccccc;
 }
 
+#password {
+  color: #cccccc;
+}
 
-/* ANIMATIONS */
+//ANIMATIONS
 
-/* Simple CSS3 Fade-in-down Animation */
+ //Simple CSS3 Fade-in-down Animation 
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -230,7 +204,7 @@ input[type=text], input[type=password]:placeholder {
   }
 }
 
-/* Simple CSS3 Fade-in Animation */
+//Simple CSS3 Fade-in Animation 
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -274,14 +248,14 @@ input[type=text], input[type=password]:placeholder {
   animation-delay: 1s;
 }
 
-/* Simple CSS3 Fade-in Animation */
+//Simple CSS3 Fade-in Animation
 .underlineHover:after {
   display: block;
   left: 0;
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: $topbar-color;
+  background-color: $navbar-title;
   content: "";
   transition: width 0.2s;
 }
@@ -294,10 +268,7 @@ input[type=text], input[type=password]:placeholder {
   width: 100%;
 }
 
-
-
-/* OTHERS */
-
+//OTHERS
 *:focus {
     outline: none;
 } 
@@ -305,5 +276,14 @@ input[type=text], input[type=password]:placeholder {
 #icon {
   width:60%;
 }
+
+/* alerts */
+.alert {
+  padding: 10px;
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 
 
