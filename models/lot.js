@@ -3,11 +3,15 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 const Decimal128 = mongoose.Schema.Types.Decimal128;
 
 const lotSchema = new mongoose.Schema({
-  latitude: {
+  name: {
+    type: String,
+    required: true,
+  },
+  lat: {
     type: Decimal128,
     required: true
   },
-  longitude: {
+  long: {
     type: Decimal128,
     required: true
   },
@@ -29,6 +33,12 @@ const lotSchema = new mongoose.Schema({
   }
 });
 
+lotSchema.pre('save', function(next) {
+  while (this.number.length < 6) {
+    this.number = "0" + this.number;
+  }
+  next();
+});
 
 const Lot = mongoose.model('Lot', lotSchema);
 
@@ -49,10 +59,4 @@ function findCost(){
   } else {
     return this.lotSchema.rates.daily.cost;
   }
-  
 }
-
-
-
-
-
