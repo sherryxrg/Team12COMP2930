@@ -17,8 +17,8 @@
             <select class='dropdown'>
               <option value='select' class='dropdown-opt'>Select Vehicle:</option>
               <% for (var i = 0; i < vehicles.length; i++) { %>
-                <option value=<%= vehicles[i] %> class="dropdown-opt">
-                  <%= vehicles[i] %>
+                <option value=<%= vehicles[i].nickname %> class="dropdown-opt">
+                  <%= vehicles[i].nickname %>
                 </option>
               <% } %>
             </select>
@@ -29,8 +29,8 @@
             <select class='dropdown'>
             <option value='select' class='dropdown-opt'>Select Card:</option>
             <% for (var i = 0; i < cards.length; i++) { %>
-                <option value=<%= cards[i] %> class="dropdown-opt">
-                  <%= cards[i] %>
+                <option value=<%= cards[i].number %> class="dropdown-opt">
+                  <%= cards[i].number %>
                 </option>
               <% } %>
             </select>
