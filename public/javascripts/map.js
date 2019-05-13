@@ -6,6 +6,18 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
+$.get('/lots/getAll', (data) => {
+  let lots = data.lots;
+  if (lots) {
+    for (let i = 0; i < lots.length; i++) {
+      L.marker([lots[i].lat, lots[i].long]).addTo(map)
+        .bindPopup(`<h4>${lots[i].name}</h4>` +
+          `<p>Lot#${lots[i].number}</p>` +
+          `<p>${lots[i].company.name}</p>`);
+    }
+  }
+});
+
 function onLocationFound(e) {
   var radius = e.accuracy / 2;
 

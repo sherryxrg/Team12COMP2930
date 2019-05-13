@@ -5,6 +5,7 @@ import models from '../models/';
 const Receipt = models.Receipt;
 const Card = models.Card;
 const Vehicle = models.Vehicle;
+const Lot = models.Lot;
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -41,7 +42,8 @@ router.get('/dashboard', async (req, res) => {
       vehicles: vehicles, 
       cards: cards, 
       ratesHourly: ["11", "22", "33"], 
-      ratesDaily: ["99", "111", "222"]} );
+      ratesDaily: ["99", "111", "222"],
+    });
   } else {
     res.redirect('/login');
   }

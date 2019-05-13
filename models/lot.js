@@ -9,11 +9,13 @@ const lotSchema = new mongoose.Schema({
   },
   lat: {
     type: Decimal128,
-    required: true
+    required: true,
+    get: getVal,
   },
   long: {
     type: Decimal128,
-    required: true
+    required: true,
+    get: getVal,
   },
   number: {
     type: String,
@@ -59,4 +61,8 @@ function findCost(){
   } else {
     return this.lotSchema.rates.daily.cost;
   }
+}
+
+function getVal(c) {
+  return parseFloat(c);
 }
