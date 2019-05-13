@@ -9,19 +9,23 @@
 
 #container {
   font-family: 'montserrat';
-  background-color: $bg-color;
+  background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: inset 0px 10px 10px -10px rgb(228, 228, 228), inset 0px -10px 10px -10px rgb(228, 228, 228); ;
   margin: 0px;
   padding: 0px;
   width: 100vw;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 60px);
 }
 
 #white-space {
   background-color: white;
   width: 800px;
-  height: calc(100vh - 40px);
+  height: calc(100vh - 80px);
   margin: 0 auto;
   padding: 0px;
+  @include diffuseshadow();
 }
 
 #outline {
@@ -32,24 +36,35 @@
   text-align: center;
 }
 
+
+//boxes
+
+.boxes {
+  @include diffusecomponent();
+  padding: 10px;
+  margin: 10px 0px 10px 0px;
+}
+
+.subhead {
+  display: inline-block;
+}
+
 #left-div {
   float: left;
   width: 50%;
   height: 100%;
   margin: 0px;
   padding: 15px;
-  border-style: solid;
-  
 }
 
 #vehicle-box {
-  height: 30%;
+  height: 22%;
   width: 100%;
   float: top;
 }
 
 #payment-box {
-  height: 30%;
+  height: 22%;
   width: 100%;
   float: bottom;
 }
@@ -60,13 +75,15 @@
   height: 100%;
   margin: 0px;
   padding: 15px;
-  border-style: solid;
+  border-left-style: solid;
+  border-left-width: 0.3px;
+  border-left-color: rgba(44, 56, 110, 0.4);
 }
 
 #lot-validation {
   margin: 10px;
-  border-style: solid;
   padding: 10px;
+  @include gentleoutline();
 }
 
 #time-calc {
@@ -84,11 +101,45 @@
 }
 
 #payment {
-  height: 200px;
+  height: 100px;
   width: 100%;
   float: top;
   display: block;
-  border-style: solid;
+}
+
+#pay-button {
+  background-color: $navbar-title-1;
+  width: 100%;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 0px 20px 0px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+#pay-button:hover {
+  background-color:$navbar-title-2;
+}
+
+#pay-button:active {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 
@@ -100,7 +151,6 @@
 
 
 // vehicles
-
 .dropdown {
   margin: 10px;
   display: block;
