@@ -32,11 +32,18 @@ router.get('/success', async (req, res) => {
 });
 
 router.get('/all', async (req, res) => {
-  const cards = await Card.find();
-  res.render('card_list', {
-    title: 'Your Cards',
-    cards
-  });
+  let user = req.session.currentUser;
+  if (user) {
+    const cards = await Card.find({
+      user: user._id
+    });
+    res.render('card_list', {
+      title: 'Cards',
+      cards: cards
+    });
+  } else {
+    res.send("Not logged in.");
+  }
 });
 
 router.get('/new', (req, res) => {

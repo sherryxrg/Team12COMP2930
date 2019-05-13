@@ -3,6 +3,8 @@ const router = express.Router();
 
 import models from '../models/';
 const Receipt = models.Receipt;
+const Card = models.Card;
+const Vehicle = models.Vehicle;
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -20,14 +22,26 @@ router.get('/login', (req, res) => {
 });
 
 // Dashboard
-router.get('/dashboard', (req, res) => {
+router.get('/dashboard', async (req, res) => {
   if (req.session.currentUser) {
-    let user = {
+    let user = req.session.currentUser;
+    let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-    res.render('dashboard', {user, title: "Dashboard", vehicles: ["vehicle 1", "vehicle 2", "vehicle 3"], 
-    cards: ["card 1", "card 2", "card 3"], ratesHourly: ["11", "22", "33"], ratesDaily: ["99", "111", "222"]} );
+    const cards = await Card.find({
+      user: user._id
+    });
+    const vehicles = await Vehicle.find({
+      user: user._id
+    });
+    res.render('dashboard', {
+      userName, 
+      title: "Dashboard", 
+      vehicles: vehicles, 
+      cards: cards, 
+      ratesHourly: ["11", "22", "33"], 
+      ratesDaily: ["99", "111", "222"]} );
   } else {
     res.redirect('/login');
   }
@@ -50,8 +64,23 @@ router.get('/register', (req, res) => {
 });
 
 // Payment
-router.get('/payment', (req, res) => {
-  res.render('payment', {title: 'Payment'});
+router.get('/payment', async (req, res) => {
+  let card = req.query.card;
+  console.log(req.query.card);
+  if (card) {
+    let c = await Card.findById(card);
+    res.render('payment', {
+      title: 'Payment',
+      card: c,
+    });
+
+    let vehicle = req.query.vehicle;
+    console.log(vehicle);
+    if (vehicle) {
+      let v = await Vehicles.findById(vehicle);
+    }
+  }
+
 });
 
 //Create Receipt
