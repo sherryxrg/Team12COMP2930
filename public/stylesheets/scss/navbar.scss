@@ -1,40 +1,60 @@
 @import 'vars';
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 #nav-bar {
+  font-family: 'Montserrat';
+  font-weight: 400;
   width: 100%;
   float: top;
   height: 60px;
-  background-color: $topbar-color;
-  color: white;
+  background-color: white;
   text-align: right;
   font-size: 12pt;
   margin: 0px;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 .section {
   height: 100%;
   text-align: center;
   padding: 20px;
+  padding-right: 24px;
+  padding-left: 24px;
   margin: 0px;
-  border-right-style: solid;
-  border-right-color: $darker-green;
-  border-right-width: 1px;
   border-spacing: 0px;
   float: right;
-  
+}
+
+
+// brand
+#brand {
+  float: left;
+  border-right-style: none;
+  font-family: 'karla';
+  font-weight: 700;
+  font-size: 20pt;
+  padding: 10px;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 
 .section:hover {
-  background-color: $darker-green;
+  background-color: rgba(255, 255, 255, 1.0);
   border-bottom-style: solid;
+  border-bottom-color: #667db6;
 }
 
 
 a {
-  color: white;
+  color: $navbar-title;
+  text-decoration: none;
 }
 
 a:hover {
-  color: white;
+  color: $navbar-title;
+  
 }
