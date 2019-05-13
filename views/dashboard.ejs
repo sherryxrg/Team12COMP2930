@@ -11,13 +11,14 @@
 
   <!-- bottom half of page after map -->
       <div id='outline'>
+      <form action='/payment' method='GET'>
     <!-- vehicle, cards -->
         <div id='left-div'>
           <div id='vehicle-box' class='boxes'>
-            <select class='dropdown'>
+            <select name='vehicle' class='dropdown'>
               <option value='select' class='dropdown-opt'>Select Vehicle:</option>
               <% for (var i = 0; i < vehicles.length; i++) { %>
-                <option value=<%= vehicles[i].nickname %> class="dropdown-opt">
+                <option value=<%= vehicles[i]._id %> class="dropdown-opt">
                   <%= vehicles[i].nickname %>
                 </option>
               <% } %>
@@ -26,10 +27,10 @@
           </div>
 
           <div id='payment-box' class='boxes'>
-            <select class='dropdown'>
-            <option value='select' class='dropdown-opt'>Select Card:</option>
+            <select name = 'card' class='dropdown'>
+            <option name = 'card' value='select' class='dropdown-opt'>Select Card:</option>
             <% for (var i = 0; i < cards.length; i++) { %>
-                <option value=<%= cards[i].number %> class="dropdown-opt">
+                <option value=<%= cards[i]._id %> class="dropdown-opt">
                   <%= cards[i].number %>
                 </option>
               <% } %>
@@ -79,6 +80,7 @@
         <input id='pay-button' type='submit' value='Pay'>
 
       </div>
+    </form>
   </div>
 </div>
 
