@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import User from './user';
 import Vehicle from './vehicle';
 import Card from './card';
+
 import Receipt from './receipt';
 import Lot from './lot';
 import Company from './company';

@@ -1,4 +1,10 @@
 
+@mixin allbg() {
+  background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: inset 0px 10px 10px -10px rgb(228, 228, 228), inset 0px -10px 10px -10px rgb(228, 228, 228);
+}
 
 @mixin narrowshadow() {
   box-shadow: 16px 20px 12px #5F6368;
@@ -21,7 +27,7 @@
 
 @mixin gentleoutline() {
   border-style: solid;
-  border-color: rgba(44, 56, 110, 0.3);
+  border-color: rgba(44, 56, 110, 0.2);
   border-width: 0.10px;
 }
 

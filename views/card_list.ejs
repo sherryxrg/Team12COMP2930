@@ -1,0 +1,18 @@
+<%- include('header') -%>
+
+<link rel='stylesheet' href='stylesheets/new_vehicle.css'/>
+
+<div id="center-field">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+        <% for (var i = 0; i < cards.length; i++) { %>
+          <div class="label"><b>Name:</b> <%= cards[i].name %></div>
+          <div class="label"><b>Number:</b> <%= cards[i].number %></div>
+          <div class="label"><b>Expiry Month:</b> <%= cards[i].expiry_month %></div>
+          <div class="label"><b>Expiry Year:</b> <%= cards[i].expiry_year %></div>
+        <% } %>
+    </div>
+  </div>
+</div>
+
+<%- include('footer') -%>

@@ -54,6 +54,18 @@ router.get('/payment', (req, res) => {
   res.render('payment', {title: 'Payment'});
 });
 
+//Create Receipt
+router.post('/payment', async (req, res) => {
+  let user = req.session.currentUser;
+  if (user) {
+    req.body.user = user._id;
+    let receipt = new models.Receipt(req.body);
+    let result = await receipt.save();
+    res.send(result);
+  } else {
+    res.send("Not logged in.");
+  }
+});
 
 // Current Receipt
 router.get('/current', async (req, res) => {
@@ -75,7 +87,7 @@ router.get('/current', async (req, res) => {
 // Payment Success Page
 router.get('/payment_success', async (req, res) => {
   const receipts = await Receipt.find();
-  const receipt = receipts[0];
+  const receipt = receipts[receipts.length - 1];
   res.render('receipt', {
     title: 'Receipt',
     receipt

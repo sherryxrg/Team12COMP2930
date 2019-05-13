@@ -11,18 +11,8 @@ body {
 }
 
 #container {
-  background-color: white;
-  height: calc(100vh - 20px);
-}
-
-#title {
- font-size: 70pt;
- padding-top: 50px;
- padding-bottom: 10px;
- color: $bg-color;
- font-family: 'Montserrat';
- text-align: center;
- margin-bottom: 0px;
+  background-color: $bg-color;
+  height: calc(100vh - 40px);
 }
 
 #center-field {
@@ -32,13 +22,6 @@ body {
   text-align: center;
 }
 
-#logo {
-  height: 100px;
-  width: 100px;
-  margin: 0 auto;
-  border-style: solid;
-  border-color: white;
-}
 
 footer {
   height: 20px;
@@ -58,29 +41,7 @@ footer {
 /* BASIC */
 
 html {
-  background-color: white;
-}
-
-a {
-  color: white;
-  display:inline-block;
-  text-decoration: none;
-  font-weight: 400;
-}
-
-h2 {
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  display:inline-block;
-  margin: 20px 8px 10px 8px; 
-  color: #cccccc;
-}
-
-.icon{
-  height: 50px;
-  width: 50px;
-  margin: 20px;
+  background-color: $bg-color;
 }
 
 /* STRUCTURE */
@@ -93,10 +54,9 @@ h2 {
   width: 100%;
   min-height: 100%;
   padding: 20px;
-  margin-top: 10%;
 }
 
-#receiptContent {
+#formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   padding: 30px;
@@ -109,18 +69,41 @@ h2 {
   text-align: center;
 }
 
-/*TYPOGRAPHY*/
-.status {
-  color: $bg-color;
-  font-size: 30pt;
+#formFooter {
+  background-color: #f6f6f6;
+  border-top: 1px solid #dce8f1;
+  padding: 25px;
+  text-align: center;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
 }
 
-.label {
+/* TABS */
+
+h2.inactive {
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid $topbar-color;
+}
+
+/* FORM TYPOGRAPHY*/
+
+label {
+  text-align: center;
+}
+
+input[type=button], input[type=submit], input[type=reset]  {
   background-color: $topbar-color;
   border: none;
   color: white;
   padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
+  text-transform: uppercase;
   font-size: 13px;
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
@@ -132,11 +115,25 @@ h2 {
   transition: all 0.3s ease-in-out;
 }
 
-.label {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color:$topbar-color;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
   padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 5px;
@@ -150,6 +147,12 @@ h2 {
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
 }
+
+input:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #2fb86c;
+}
+
 
 /* ANIMATIONS */
 
@@ -233,5 +236,30 @@ h2 {
   animation-delay: 1s;
 }
 
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: $topbar-color;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after{
+  width: 100%;
+}
 
 
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+} 

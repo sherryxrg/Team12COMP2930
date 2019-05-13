@@ -11,18 +11,25 @@ const cardSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  cvc: {
+    type: Number,
+  },
   card_type: {
     type: String,
     //required: true
   },
-  expiry: {
-    type: Date,
+  expiry_month: {
+    type: Number,
+    required: true
+  },
+  expiry_year: {
+    type: Number,
     required: true
   },
   user: {
     type: ObjectId,
     ref: 'User',
-    //required: true
+    required: true
   },
 
 });

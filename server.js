@@ -78,7 +78,7 @@ app.use(sassMiddleware({
   prefix:  '/stylesheets'
 }));
 // Sass loader must come before static dec.
-app.use('/', serveStatic('./public'));
+app.use('/', serveStatic(path.join(__dirname, 'public')));
 app.use(session({
   secret: process.env.SECRET,
   currentUser: null

@@ -1,14 +1,21 @@
 <%- include('header') -%>
 
-<div>
-  <form action="/vehicles" method="POST">
-    <label>License Plate</label>
-    <input name="license_plate">
-    <label>Nickname</label>
-    <input name="nickname">
-    <label>Make</label>
-    <input name="make">
-    <input type="submit"></input>
-  </form>
+<link rel='stylesheet' href='stylesheets/new_vehicle.css'/>
+
+<div id="center-field">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <form action="/vehicles" method="POST">
+        <label>License Plate</label>
+        <input name="license_plate">
+        <label>Nickname</label>
+        <input name="nickname">
+        <label>Make/Brand</label>
+        <input name="make">
+        <input type="submit"></input>
+      </form>
+    </div>
+  </div>
 </div>
+
 <%- include('footer') -%>

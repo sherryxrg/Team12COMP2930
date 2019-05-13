@@ -1,28 +1,12 @@
 <%- include('header') %>
 
 <link rel='stylesheet' href='stylesheets/payment.css'/>
-
-<div id='my-container'>
-
-
-  <div id='base-container'>
-
-      <!-- displays location of current lot; clicking directs back to  -->
-      <div id='top-section'>
-
-      <p id='page-title'>Confirm details</p>
-      <p>current lot: InPark</p>
-      <p>license plate: ABC 000</p>
-
-      </div>
-
-      <!-- enter payment details  -->
-      <div id='bottom-section'>
+<div id='container'>
+  <div id='white-space'>
 
       <!--- bootstrap stuff -->
-       
        <div class="container">
-    <div class='row'>
+        <div class='row'>
         <div class='col-md-2'></div>
         <div class='col-md-4'>
           <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
@@ -42,15 +26,15 @@
             <div class='form-row'>
               <div class='col-xs-4 form-group cvc required'>
                 <label class='control-label'>CVC</label>
-                <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
+                <input name='cvc' autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
               </div>
               <div class='col-xs-4 form-group expiration required'>
                 <label class='control-label'>Expiration</label>
-                <input name='expiry' class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
+                <input name='expiry_month' class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
               </div>
               <div class='col-xs-4 form-group expiration required'>
                 <label class='control-label'> </label>
-                <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
+                <input name='expiry_year' class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
               </div>
             </div>
             <div class='form-row'>
