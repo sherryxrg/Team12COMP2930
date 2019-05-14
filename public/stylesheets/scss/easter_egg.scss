@@ -1,5 +1,9 @@
-.car{
-  width: 200px;
+.car {
+  background-attachment: fixed;
+  left: 1%;
+  position: absolute;
+  width: 100px;
+  
 }
 
 .animated {
@@ -45,22 +49,7 @@
   }
 }
 
-.remove{
-  opacity: 0;
-  animation-duration: 4s;
-  
-}
-
-
-
-.car {
-  background-attachment: fixed;
-  left: 43vw;
-  top: 10px;
-  position: absolute;
-  
-  
-}
 select{
   opacity: 0; 
+  display: none;
 }

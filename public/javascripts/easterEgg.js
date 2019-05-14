@@ -1,12 +1,17 @@
 $(document).ready(function () {
   var count = 0;
   $(".car").on( "click", function(e) {
-     
     e.preventDefault();
     console.log(".car");
     $('.car').addClass('animated');
     setTimeout(() => { $('.car').removeClass('animated');}, 600);
-})
+    count++;
+    console.log(count);
+    if (count > 4){
+     $(".car").attr('src','/assets/broken_car2.png');
+    }
+  })
+  
   
 
 const options = {
@@ -15,18 +20,14 @@ const options = {
   points: 5, // number of points in explosion
 
 }
-const inputs = document.querySelectorAll('input, select');
+const inputs = document.querySelectorAll('input, select'); //unnecessary code
 const main = document.querySelector('.car');
 let clicked = false;
 
-
-
 // Event Listeners
-
 inputs.forEach(input => {
   input.addEventListener('change', handleInput);
   input.addEventListener('mousemove', () => {
-    if (clicked) handleInput.apply(input);
   });
   // initialize options
   input.dispatchEvent(new Event('change'));
@@ -76,7 +77,6 @@ function explode(e, options) {
 	 if (option == 'duration') {
       document.documentElement.style.setProperty('--duration', `${this.value}s`);
       }
-  
   }
 
 
