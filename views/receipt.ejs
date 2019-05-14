@@ -13,13 +13,13 @@
             <!-- Receipt Info -->
             <div>
               <div class="label"><b>Receipt Number:</b> <%= receipt._id %></div>
-              <div class="label"><b>License Plate:</b> <%= receipt.license_plate %></div>
-              <div class="label"><b>Lot:</b> ImPark #1234</div>
-              <div class="label"><b>Date:</b> May 8, 2019</div>
-              <div class="label"><b>Start Time:</b> <%= receipt.start_time.toLocaleString() %></div>
-              <div class="label"><b>End Time:</b> <%= receipt.end_time.toLocaleString() %></div>
-              <div class="label"><b>Card:</b> VISA ending in 4567</div>
-              <div class="label"><b>Total:</b> $<%= receipt.price %></div>
+              <div class="label"><b>License Plate:</b> <%= receipt.vehicle.license_plate %></div>
+              <div class="label"><b>Lot:</b> </div>
+              <div class="label"><b>Date:</b> </div>
+              <div class="label"><b>Card:</b> <%= receipt.card.number %></div>
+              <div class="label"><b>Start Time:</b> <%= //receipt.start_time.toLocaleString() %></div>
+              <div class="label"><b>End Time:</b> <%= //receipt.end_time.toLocaleString() %></div>
+              <div class="label"><b>Total:</b> $<%= //receipt.price %></div>
             </div>
             <br>
           </div>
