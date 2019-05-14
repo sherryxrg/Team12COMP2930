@@ -95,9 +95,12 @@ router.get('/payment_success', async (req, res) => {
 });
 
 function titleize(s) {
-  const f = s.slice(0, 1);
-  const l = s.slice(1, s.length);
-  return f.toUpperCase() + l.toLowerCase();
+  if (s) {
+    const f = s.slice(0, 1);
+    const l = s.slice(1, s.length);
+    return f.toUpperCase() + l.toLowerCase();
+  }
+  return "";
 }
 
 module.exports = router;
