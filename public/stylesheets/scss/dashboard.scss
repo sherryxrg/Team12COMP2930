@@ -1,5 +1,6 @@
 @import 'vars';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 .heading {
   font-size: 14px;
@@ -12,14 +13,14 @@
   margin: 0px;
   padding: 0px;
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 40px);
   @include allbg();
 }
 
 #white-space {
   background-color: white;
   width: 800px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 40px);
   margin: 0 auto;
   padding: 0px;
   @include diffuseshadow();
@@ -98,6 +99,10 @@
   width: 100%;
   float: top;
   display: block;
+}
+
+#parking-time {
+  text-align: center;
 }
 
 #payment {
