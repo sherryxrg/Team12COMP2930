@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
     let result = await card.save();
     res.redirect('/cards/success');
   } else {
-    res.send("Not logged in.");
+    res.redirect('/login');;
   }
 });
 
@@ -42,7 +42,7 @@ router.get('/all', async (req, res) => {
       cards: cards
     });
   } else {
-    res.send("Not logged in.");
+    res.redirect('/login');
   }
 });
 

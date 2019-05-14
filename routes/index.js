@@ -92,7 +92,7 @@ router.post('/payment', async (req, res) => {
     let result = await receipt.save();
     res.send(result);
   } else {
-    res.send("Not logged in.");
+      res.redirect('/login');
   }
 });
 
