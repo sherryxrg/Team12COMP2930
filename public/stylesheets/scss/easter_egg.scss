@@ -1,8 +1,14 @@
 .car {
   background-attachment: fixed;
-  left: 1%;
-  position: absolute;
-  width: 100px;
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  
+}
+#btn{
+  margin-bottom: 0px;
   
 }
 

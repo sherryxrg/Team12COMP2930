@@ -6,11 +6,16 @@ $(document).ready(function () {
     $('.car').addClass('animated');
     setTimeout(() => { $('.car').removeClass('animated');}, 600);
     count++;
-    console.log(count);
     if (count > 4){
      $(".car").attr('src','/assets/broken_car2.png');
     }
-  })
+    if (count > 20){
+      $(".car").attr('src','/assets/tires.png');
+      $(".car").css('width','250px');
+      
+    }
+  
+})
   
   
 
