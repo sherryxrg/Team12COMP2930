@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
       res.redirect('/register');
     } else {
       req.session.currentUser = user;
+      req.flash('success', 'You have successfully registered');
       res.redirect('/dashboard');
     }
   });
@@ -30,6 +31,7 @@ router.post('/', async (req, res) => {
       return res.status(400).send("Login failed.");
     }
     req.session.currentUser = user;
+    req.flash('success', 'You have successfully logged in');
     res.redirect('/dashboard');
   });
 });
