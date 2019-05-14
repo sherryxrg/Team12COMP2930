@@ -11,7 +11,7 @@ $(document).ready(function () {
     }
     if (count > 20){
       $(".car").attr('src','/assets/tires.png');
-      $(".car").css('width','250px');
+      $(".car").css('width','210px');
       
     }
   
