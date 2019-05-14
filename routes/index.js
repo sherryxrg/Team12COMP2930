@@ -13,12 +13,40 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 // Home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Parked', user: req.session.currentUser });
+  res.render('index', {title: 'Parked'});
+  if (req.session.currentUser) {
+  let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+    }
+  res.render('index', { 
+    title: 'Parked', 
+    user: req.session.currentUser, 
+    userName
+  });
+}
+
 });
 
 // Login page
 router.get('/login', (req, res) => {
   res.render('login', {title: 'Login'});
+  if (req.session.currentUser) {
+    let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+    };
+  res.render('login', {
+    user,
+    userName,
+    title: 'Login'
+  });
+} else {
+  res.redirect('/login');
+}
+
 });
 
 // Dashboard
@@ -36,6 +64,7 @@ router.get('/dashboard', async (req, res) => {
       user: user._id
     });
     res.render('dashboard', {
+      user,
       userName, 
       title: "Dashboard", 
       vehicles: vehicles, 
@@ -47,7 +76,7 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-// Landing
+/* Landing
 router.get('/landing', (req, res) => {
   let user = null;
   user = req.session.currentUser;
@@ -57,6 +86,7 @@ router.get('/landing', (req, res) => {
     res.redirect('/login');
   }
 });
+*/
 
 // Register
 router.get('/register', (req, res) => {

@@ -1,0 +1,10 @@
+@import 'vars';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+
+#container {
+  @include allbg();
+  height: calc(100vh - 40px);
+  font-family: 'Montserrat';
+  width: 100vw;
+}
