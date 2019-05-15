@@ -1,4 +1,6 @@
-require('dotenv').config();
+if (process.env.NODE_ENV == 'development') {
+  require('dotenv').config();
+}
 import mongoose from 'mongoose';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 require('mongoose-currency').loadType(mongoose);
