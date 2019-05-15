@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+
 import models from '../models/';
+import { RSA_NO_PADDING } from 'constants';
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -18,7 +20,7 @@ router.post('/', async (req, res) => {
     let result = await card.save();
     res.redirect('/cards/success');
   } else {
-    res.send("Not logged in.");
+    res.redirect('/login');;
   }
 });
 
@@ -32,15 +34,49 @@ router.get('/success', async (req, res) => {
 });
 
 router.get('/all', async (req, res) => {
-  const cards = await Card.find();
-  res.render('card_list', {
-    title: 'Your Cards',
-    cards
-  });
+  let user = req.session.currentUser;
+  if (user) {
+    let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+  };
+    const cards = await Card.find({
+      user: user._id
+    });
+    res.render('card_list', {
+      title: 'Cards',
+      cards: cards,
+      user,
+      userName
+    });
+  } else {
+    res.redirect('/login');
+  }
 });
 
 router.get('/new', (req, res) => {
-  res.render('payment', {title: 'Add a new payment method'});
+  let user = req.session.currentUser;
+  if (user) {
+    let userName = {
+      first_name: titleize(user.first_name),
+      last_name: titleize(user.last_name)
+    }
+    res.render('new_card', {
+      user,
+      userName,
+      title: 'Add a New Payment Method'
+    });
+  } else {
+    res.redirect('/login');
+  }
+  
 });
+
+function titleize(s) {
+  const f = s.slice(0, 1);
+  const l = s.slice(1, s.length);
+  return f.toUpperCase() + l.toLowerCase();
+}
 
 module.exports = router;

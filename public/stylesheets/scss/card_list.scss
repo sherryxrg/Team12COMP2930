@@ -1,0 +1,28 @@
+@import 'vars';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+
+#container {
+  @include allbg();
+  height: calc(100vh - 40px);
+  font-family: 'Montserrat';
+  padding-top: 50px;
+}
+
+#content {
+  background-color: white;
+  width: 400px;
+  height: 200px;
+  margin: 0 auto;
+  padding: 20px;
+  
+}
+
+#each-card {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  @include gentleoutline();
+}
