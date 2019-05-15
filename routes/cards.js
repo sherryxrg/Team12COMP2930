@@ -12,13 +12,13 @@ mongoose.connect(process.env.DATABASE_URL, {
 const Card = models.Card;
 
 //Add a new card (payment option)
-router.post('/', async (req, res) => {
+router.post('/new', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     req.body.user = user._id;
     let card = new models.Card(req.body);
-    let result = await card.save();
-    res.redirect('/cards/success');
+    await card.save();
+    res.redirect('/dashboard');
   } else {
     res.redirect('/login');;
   }
