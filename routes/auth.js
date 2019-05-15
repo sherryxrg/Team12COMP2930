@@ -28,11 +28,12 @@ router.post('/', async (req, res) => {
     }
     if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
       console.log(user);
-      return res.status(400).send("Login failed.");
-    }
+    res.redirect('/login');
+    }else {
     req.session.currentUser = user;
     req.flash('success', 'You have successfully logged in');
     res.redirect('/dashboard');
+    }
   });
 });
 
