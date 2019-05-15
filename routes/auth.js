@@ -26,15 +26,14 @@ router.post('/', async (req, res) => {
     if (err) {
       console.error(err);
     }
-    if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
-      console.log(user);
-      req.flash('success', 'Incorrect email or password');
-    res.redirect('/login');
 
-    }else {
-    req.session.currentUser = user;
-    req.flash('success', 'You have successfully logged in');
-    res.redirect('/dashboard');
+    if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
+      req.flash('success', 'Login failed');
+      res.redirect('/login');
+    } else {
+      req.session.currentUser = user;
+      req.flash('success', 'You have successfully logged in');
+      res.redirect('/dashboard');
     }
   });
 });

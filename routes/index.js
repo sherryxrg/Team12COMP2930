@@ -16,7 +16,11 @@ router.get('/', function(req, res, next) {
 
 // Login page
 router.get('/login', (req, res) => {
-  res.render('login', {title: 'Login'});
+  let success = '';
+  if (req.flash('success')) {
+    success = req.flash('success');
+  }
+  res.render('login', {title: 'Login', success});
 });
 
 // Dashboard
