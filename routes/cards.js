@@ -11,8 +11,8 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 const Card = models.Card;
 
-//Add a new card (payment option)
-router.post('/new', async (req, res) => {
+//Create card (payment option)
+router.post('/', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     req.body.user = user._id;
@@ -33,6 +33,7 @@ router.get('/success', async (req, res) => {
   });
 });
 
+//Cards index
 router.get('/all', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
@@ -55,6 +56,7 @@ router.get('/all', async (req, res) => {
   }
 });
 
+//New card
 router.get('/new', (req, res) => {
   let user = req.session.currentUser;
   if (user) {
