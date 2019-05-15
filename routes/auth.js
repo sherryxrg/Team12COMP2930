@@ -24,13 +24,15 @@ router.post('/', async (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if (err) {
       console.error(err);
+      res.redirect('/login');
     }
-    if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
+    if (!user || !Bcrypt.compareSync(req.body.password, user.password)) {
       console.log(user);
-      return res.status(400).send("Login failed.");
-    }
+      res.redirect('/login');
+    } else {
     req.session.currentUser = user;
     res.redirect('/dashboard');
+    }
   });
 });
 
