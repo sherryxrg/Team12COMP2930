@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 const ObjectId = mongoose.Schema.Types.ObjectId;
 const Decimal128 = mongoose.Schema.Types.Decimal128;
+require('mongoose-currency').loadType(mongoose);
+var Currency = mongoose.Types.Currency;
 
 const lotSchema = new mongoose.Schema({
   name: {
@@ -28,12 +30,19 @@ const lotSchema = new mongoose.Schema({
   },
   rates: {
     daily: {
-      until: Date,
-      cost: Number 
+      type: Currency,
+      get: getRate,
     },
-    hourly: Number
+    hourly: {
+      type: Currency,
+      get: getRate,
+    }
   }
 });
+
+function getRate(num) {
+return (num/100).toFixed(2);
+}
 
 lotSchema.pre('save', function(next) {
   while (this.number.length < 6) {
