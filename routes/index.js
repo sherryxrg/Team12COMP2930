@@ -26,8 +26,11 @@ router.get('/dashboard', (req, res) => {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-    res.render('dashboard', {success: req.flash('success'), user, title: "Dashboard", vehicles: ["vehicle 1", "vehicle 2", "vehicle 3"], 
-    cards: ["card 1", "card 2", "card 3"], ratesHourly: ["11", "22", "33"], ratesDaily: ["99", "111", "222"]} );
+    res.render('dashboard', {
+      success: req.flash('success'),
+      user, title: "Dashboard",
+      vehicles: ["vehicle 1", "vehicle 2", "vehicle 3"], 
+      cards: ["card 1", "card 2", "card 3"], ratesHourly: ["11", "22", "33"], ratesDaily: ["99", "111", "222"]} );
   } else {
     res.redirect('/login');
   }

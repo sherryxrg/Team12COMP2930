@@ -2,18 +2,11 @@
 <%- include('header') %>
 
 <div id='container'>
-  <%  if (typeof success != 'undefined') { %>
+  <%  if (typeof success != 'undefined' && success.length > 0) { %>
      <div class="alert alert-success alert-dismissible fade show">
-        Successfully logged in
+       <%= success %>
         <button type="button" class="close" data-dismiss="alert">&times;</button>
     </div>
-
-
-     <div class="alert alert-success alert-dismissible fade show">
-        New vehicle has been added
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-    </div>
-
   <% } %>
 
   <div id='white-space'>
