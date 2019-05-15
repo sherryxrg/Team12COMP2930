@@ -9,17 +9,45 @@ const Lot = models.Lot;
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true
+  useNewUrlParser: true
 });
 
 // Home page
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Parked', user: req.session.currentUser });
+  res.render('index', {title: 'Parked'});
+  if (req.session.currentUser) {
+  let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+    };
+  res.render('index', { 
+    title: 'Parked', 
+    user: req.session.currentUser, 
+    userName
+  });
+}
+
 });
 
 // Login page
 router.get('/login', (req, res) => {
   res.render('login', {title: 'Login'});
+  if (req.session.currentUser) {
+    let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+    };
+  res.render('login', {
+    user,
+    userName,
+    title: 'Login'
+  });
+} else {
+  res.redirect('/login');
+}
+
 });
 
 // Dashboard
@@ -37,50 +65,50 @@ router.get('/dashboard', async (req, res) => {
       user: user._id
     });
     res.render('dashboard', {
-      userName, 
-      title: "Dashboard", 
-      vehicles: vehicles, 
-      cards: cards, 
-      ratesHourly: ["11", "22", "33"], 
-      ratesDaily: ["99", "111", "222"],
+      user,
+      userName,
+      title: "Dashboard",
+      vehicles: vehicles,
+      cards: cards,
+      ratesHourly: ["11", "22", "33"],
+      ratesDaily: ["99", "111", "222"]
     });
   } else {
     res.redirect('/login');
   }
 });
 
-// Landing
+/* Landing
 router.get('/landing', (req, res) => {
   let user = null;
   user = req.session.currentUser;
   if (user) {
-  res.render('landing', {user: user, title: "Landing"} );
+    res.render('landing', { user: user, title: "Landing" });
   } else {
     res.redirect('/login');
   }
 });
+*/
 
 // Register
 router.get('/register', (req, res) => {
-  res.render('register', {title: 'Register'});
+  res.render('register', { title: 'Register' });
 });
 
 // Payment
 router.get('/payment', async (req, res) => {
   let card = req.query.card;
   console.log(req.query.card);
-  if (card) {
+  let vehicle = req.query.vehicle;
+  console.log(vehicle);
+  if (card && vehicle) {
     let c = await Card.findById(card);
+    let v = await Vehicle.findById(vehicle);
     res.render('payment', {
       title: 'Payment',
       card: c,
+      vehicle: v
     });
-
-    let vehicle = req.query.vehicle;
-    console.log(vehicle);
-    if (vehicle) {
-      let v = await Vehicles.findById(vehicle);
-    }
   }
 
 });
@@ -89,12 +117,20 @@ router.get('/payment', async (req, res) => {
 router.post('/payment', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
-    req.body.user = user._id;
-    let receipt = new models.Receipt(req.body);
-    let result = await receipt.save();
-    res.send(result);
+    let receipt = new models.Receipt();
+    receipt.vehicle = req.body.vehicle_id;
+    receipt.card = req.body.card_id;
+    receipt.user = user._id;
+    console.log(receipt);
+    await receipt.save();
+    Receipt.find({ _id: receipt._id}).populate('vehicle').populate('card').exec((err, receipts) => {
+      res.render('receipt', {
+        title: 'Payment Success',
+        receipt: receipts[0]
+      });
+    });
   } else {
-    res.send("Not logged in.");
+      res.redirect('/login');
   }
 });
 
@@ -105,7 +141,7 @@ router.get('/current', async (req, res) => {
     end_time: {
       $gt: date,
     }
-  }).sort({end_time: -1}).exec( (err, docs) => {
+  }).sort({ end_time: -1 }).exec((err, docs) => {
     if (err) return (err);
     const receipt = docs[0];
     res.render('receipt', {
