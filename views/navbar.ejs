@@ -11,14 +11,14 @@
           <a href="/register">Register</a>
         </div>
   <% } else { %> 
-        <div id='dashboard' class='section'>
-          <a href="/dashboard">Dashboard</a>
-        </div>
         <div id='logout' class='section'>
           <a href="/auth/logout">Logout</a>
         </div>
-        <div id='current-user' class='section'>
-          <a href="/dashboard"> Hi, <%= userName.first_name %> </a>
+        <div id='dashboard' class='section'>
+          <a href="/dashboard">Dashboard</a>
+        </div>
+        <div id='current-user'>
+          <p> Hi, <%= userName.first_name %> </p>
         </div>
       <% } %>
 </nav>
