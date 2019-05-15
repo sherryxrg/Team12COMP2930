@@ -100,14 +100,17 @@ router.get('/payment', async (req, res) => {
   let card = req.query.card;
   console.log(req.query.card);
   let vehicle = req.query.vehicle;
+  let lot = req.query.lot;
   console.log(vehicle);
   if (card && vehicle) {
     let c = await Card.findById(card);
     let v = await Vehicle.findById(vehicle);
+    let l = await Lot.findOne({number: lot});
     res.render('payment', {
       title: 'Payment',
       card: c,
-      vehicle: v
+      vehicle: v,
+      lot: l
     });
   }
 

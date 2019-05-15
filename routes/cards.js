@@ -20,13 +20,13 @@ router.post('/', async (req, res) => {
     let result = await card.save();
     res.redirect('/cards/success');
   } else {
-    res.redirect('/login');;
+    res.redirect('/login');
   }
 });
 
 router.get('/success', async (req, res) => {
   const cards = await Card.find();
-  const newCard = cards[cards.length -1]
+  const newCard = cards[cards.length -1];
   res.render('new_card_added', {
     title: 'Card Registered',
     newCard
@@ -61,7 +61,7 @@ router.get('/new', (req, res) => {
     let userName = {
       first_name: titleize(user.first_name),
       last_name: titleize(user.last_name)
-    }
+    };
     res.render('new_card', {
       user,
       userName,
