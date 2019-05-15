@@ -1,5 +1,7 @@
 <%- include('header') -%>
 <link rel="stylesheet" type="text/css" href="stylesheets/landing.css">
+<link rel='stylesheet' href='/stylesheets/easter_egg.css'/>
+<script src="/javascripts/easterEgg.js"></script>
 
 <div id="container">
         <div id="content">
@@ -7,7 +9,12 @@
               <h2 id='subtitle'>The only app you'll need for parking.</h2>
           
           <button id='btn'><a href='/login'>GET STARTED</a></button>
-          <div class="underbar"></div>
+          <img class="car" src='/assets/blue_car.png'>
+            <select  data-option="character">
+		      <option value="💥"></option>
+		    </select>
+          
+              <div class="underbar"></div>
         
         
         </div>
