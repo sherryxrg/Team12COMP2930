@@ -12,17 +12,18 @@ var connection = mongoose.createConnection(process.env.DATABASE_URL);
 autoIncrement.initialize(connection);
 
 const receiptSchema = new mongoose.Schema({
-  license_plate: {
-    type: String,
+  vehicle: {
+    type: ObjectId,
+    ref: 'Vehicle',
     required: true
   },
   start_time: {
     type: Date,
-    required: true
+    //required: true
   },
   end_time: {
     type: Date,
-    required: true
+    //required: true
   },
   user: {
     type: ObjectId,
@@ -37,12 +38,12 @@ const receiptSchema = new mongoose.Schema({
   card: {
     type: ObjectId,
     ref: 'Card',
-    //required: true
+    required: true
   },
   price: {
     type: Currency,
     get: getPrice,
-    required: true
+    //required: true
   }
 });
 

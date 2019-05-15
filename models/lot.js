@@ -21,7 +21,8 @@ const lotSchema = new mongoose.Schema({
   },
   number: {
     type: String,
-    required: true
+    required: true,
+    unique: true,
   },
   company: {
     type: ObjectId,
