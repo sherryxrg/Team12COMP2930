@@ -19,8 +19,9 @@ router.get('/login', (req, res) => {
   let success = '';
   if (req.flash('success')) {
     success = req.flash('success');
+    res.render('login', {title: 'Login', success});
   }
-  res.render('login', {title: 'Login', success});
+  
 });
 
 // Dashboard
