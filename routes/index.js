@@ -25,8 +25,7 @@ router.get('/', function(req, res, next) {
     user: req.session.currentUser, 
     userName
   });
-}
-
+  }
 });
 
 // Login page
