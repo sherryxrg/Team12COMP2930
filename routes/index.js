@@ -32,8 +32,8 @@ router.get('/', function(req, res, next) {
 // Login page
 router.get('/login', (req, res) => {
   res.render('login', {title: 'Login'});
-  if (req.session.currentUser) {
-    let user = req.session.currentUser;
+  let user = req.session.currentUser;
+  if (user) {
     let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
@@ -43,6 +43,7 @@ router.get('/login', (req, res) => {
     userName,
     title: 'Login'
   });
+    res.redirect('/dashboard');
 } else {
   res.redirect('/login');
 }

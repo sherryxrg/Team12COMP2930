@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 /* Destop version */
+
 @media only screen and (min-width: 501px) {
   .heading {
     font-size: 14px;
@@ -17,12 +18,13 @@
     width: 100vw;
     height: auto;
     @include allbg();
+    padding-top: 50px;
   }
 
-  #white-space {
+  #content {
     background-color: white;
     width: 800px;
-    height: auto;
+    height: 820px;
     margin: 0 auto;
     padding: 0px;
     @include diffuseshadow();
@@ -88,6 +90,10 @@
     height: 28%;
     width: 100%;
     float: bottom;
+  }
+
+  #current-lot {
+    margin-bottom: 0px;
   }
 
   #right-div {
@@ -173,6 +179,8 @@
   #mapid { 
     height: 35%; 
     width: 100%;
+    margin: 0px;
+    padding: 0px;
   }
 }
 
