@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node main.js",
-    "dev": "NODE_ENV=development npx nodemon main.js"
+    "dev": "NODE_ENV=development npx nodemon main.js",
+    "seed": "node lib/scripts/runSeed.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.4",

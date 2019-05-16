@@ -5,6 +5,7 @@ import models from '../models/';
 const Receipt = models.Receipt;
 const Card = models.Card;
 const Vehicle = models.Vehicle;
+const Lot = models.Lot;
 const mongoose = require("mongoose");
 
 mongoose.connect(process.env.DATABASE_URL, {
@@ -19,7 +20,7 @@ router.get('/', function(req, res, next) {
     let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
-    }
+    };
   res.render('index', { 
     title: 'Parked', 
     user: req.session.currentUser, 
@@ -99,14 +100,17 @@ router.get('/payment', async (req, res) => {
   let card = req.query.card;
   console.log(req.query.card);
   let vehicle = req.query.vehicle;
+  let lot = req.query.lot;
   console.log(vehicle);
   if (card && vehicle) {
     let c = await Card.findById(card);
     let v = await Vehicle.findById(vehicle);
+    let l = await Lot.findOne({number: lot});
     res.render('payment', {
       title: 'Payment',
       card: c,
-      vehicle: v
+      vehicle: v,
+      lot: l
     });
   }
 
@@ -119,7 +123,7 @@ router.post('/payment', async (req, res) => {
     let receipt = new models.Receipt();
     receipt.vehicle = req.body.vehicle_id;
     receipt.card = req.body.card_id;
-    receipt.user = user._id
+    receipt.user = user._id;
     console.log(receipt);
     await receipt.save();
     Receipt.find({ _id: receipt._id}).populate('vehicle').populate('card').exec((err, receipts) => {

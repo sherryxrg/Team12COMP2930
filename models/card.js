@@ -12,9 +12,6 @@ const cardSchema = new mongoose.Schema({
     unique: true,
     get: obfuscate
   },
-  cvc: {
-    type: Number,
-  },
   card_type: {
     type: String,
     //required: true

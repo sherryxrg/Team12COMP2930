@@ -1,24 +1,43 @@
-var map = L.map('mapid');
+$(document).ready(function() {
+  var map = L.map('mapid');
 
-map.locate({setView: true, maxZoom: 16});
+  map.locate({setView: true, maxZoom: 16});
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
 
-function onLocationFound(e) {
-  var radius = e.accuracy / 2;
+  $.get('/lots/getAll', (data) => {
+    let lots = data.lots;
+    if (lots) {
+      for (let i = 0; i < lots.length; i++) {
+        L.marker([lots[i].lat, lots[i].long]).addTo(map)
+          .bindPopup(`<h5>${lots[i].name}</h5>` +
+            `<p>Lot#${lots[i].number}</p>` +
+            `<p>${lots[i].company.name}</p>` +
+            `<button class="select" id="${lots[i].number}">Select</button>`);
+      }
+    }
+  });
 
-  L.marker(e.latlng).addTo(map)
-      .bindPopup("You are here").openPopup();
+  $(document).on('click', '.select', function() {
+    $('#lot-input').val($(this).attr('id'));
+  });
 
-  L.circle(e.latlng, radius).addTo(map);
-}
+  function onLocationFound(e) {
+    var radius = e.accuracy / 2;
 
-map.on('locationfound', onLocationFound);
+    L.marker(e.latlng).addTo(map)
+        .bindPopup("You are here").openPopup();
 
-function onLocationError(e) {
-    alert(e.message);
-}
+    L.circle(e.latlng, radius).addTo(map);
+  }
 
-map.on('locationerror', onLocationError);
+  map.on('locationfound', onLocationFound);
+
+  function onLocationError(e) {
+      alert(e.message);
+  }
+
+  map.on('locationerror', onLocationError);
+});
