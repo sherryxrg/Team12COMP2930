@@ -31,9 +31,19 @@
   border-width: 0.10px;
 }
 
+@mixin dropdown() {
+  height: 40px;
+  appearance: none;
+  border: none;
+  background-color: $select-bg;
+}
+
+//different shades of the palatte;
 $navbar-title: #667db6;
 $navbar-title-1: #415177;
 $navbar-title-2: #303d5a;
+
+$select-bg: rgb(231, 231, 231);
 
 
 // ------------ OLD CSS STUFF
