@@ -8,7 +8,7 @@
 }
 
 #container{
-  height: calc(105vh - 40px);
+  height: calc(260vh - 40px);
   width: 100%;
   margin: 0 auto;
   padding: 0px;
@@ -71,8 +71,43 @@
   column-count: 2;
 }
 
-
-
+.john,.estevan,.kush,.sherry,.steven{
+  width: 200px;
+  border-radius: 50%;
+  border: white solid 5px;
+  background-color: white;
+  
+}
+.header{
+  color: white;
+  font-family: 'karla';
+  font-weight: 700;
+  font-size: 60pt;
+  letter-spacing: 0.02em;
+  margin-bottom: 100px;
+  margin-top: 250px;
+}
+.about_top{
+  column-count: 3;
+  width: 100%;
+  column-width: 25%;
+  column-gap: 5%
+    
+}
+.about_bottom {
+  column-count: 2;
+  width: 63%;
+  margin: auto;
+  column-gap: 5%;
+}
+.about_bottom p,.about_top p{
+  text-align: center;
+  color: 535353;
+}
+.name{
+  color: white;
+  margin: 10px;
+}
 
 
 

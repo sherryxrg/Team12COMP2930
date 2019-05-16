@@ -25,7 +25,7 @@ const options = {
   points: 5, // number of points in explosion
 
 }
-const inputs = document.querySelectorAll('input, select'); //unnecessary code
+const inputs = document.querySelectorAll('input, select'); 
 const main = document.querySelector('.car');
 let clicked = false;
 
