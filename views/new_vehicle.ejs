@@ -5,14 +5,19 @@
 <div id="container">
   <div id="content">
     <form action="/vehicles" method="POST">
-      <label>License Plate</label>
-      <input name="license_plate">
-      <label>Nickname</label>
-      <input name="nickname">
-      <label>Make/Brand</label>
-      <input name="make">
-      <br><br>
-      <input type="submit">
+      <div class='field-unit'>
+        <label>License Plate</label>
+        <input name="license_plate">
+      </div>
+      <div class='field-unit'>
+        <label>Nickname</label>
+        <input name="nickname">
+      </div>
+      <div class='field-unit'>
+        <label>Make/Brand</label>
+        <input name="make">
+      </div>
+      <input id='submit-button' type="submit">
     </form>
   </div>
 </div>

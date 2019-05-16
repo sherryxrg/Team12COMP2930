@@ -18,6 +18,15 @@
     background-color: white;
   }
 
+  .field-unit {
+    margin: 15px;
+  }
+
+  #submit-button {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
   /* bits from boostrap (mostly inputs) */
   label {
     text-align: center;
@@ -26,6 +35,7 @@
   input[type=button], input[type=submit], input[type=reset]  {
     background-color: $navbar-title-1;
     border: none;
+    width: 430px;
     color: white;
     padding: 15px 80px;
     text-align: center;
@@ -92,6 +102,15 @@
     margin: 0 auto;
     text-align: center;
     background-color: white;
+  }
+
+  .field-unit {
+    margin: 4px;
+  }
+
+  #submit-button {
+    margin-top: 50px;
+    margin-bottom: 10px;
   }
 
   /* bits from boostrap (mostly inputs) */
