@@ -140,13 +140,13 @@ router.post('/payment', async (req, res) => {
     let hours = req.body.hours;
     let end_time = new Date();
     if (rate_type == 'hourly') {
-      end_time.setHours(end_time.getHours() + hours)
+      end_time.setTime(end_time.getTime() + (60*60*1000));
       //Error cannot cast to Date
-      receipt.end_time = new Date(end_time);
+      receipt.end_time = end_time;
     } else if (rate_type == 'daily') {
-      end_time.setDate(end_time.getDate() + 1);
+      end_time.setTime(end_time.getTime() + (24*60*60*1000));
       //Error cannot cast to Date
-      receipt.end_time = new Date(end_time);
+      receipt.end_time = end_time;
     }
     console.log(receipt);
     await receipt.save();
