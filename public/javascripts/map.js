@@ -15,13 +15,26 @@ $(document).ready(function() {
           .bindPopup(`<h5>${lots[i].name}</h5>` +
             `<p>Lot#${lots[i].number}</p>` +
             `<p>${lots[i].company.name}</p>` +
+            `<p class="daily">Daily: $<span>${lots[i].daily}</span></p>` +
+            `<p class="hourly">Hourly: $<span>${lots[i].hourly}</span></p>` +
             `<button class="select" id="${lots[i].number}">Select</button>`);
       }
     }
-  });
+    $(document).on('click', '.select', function() {
+      $('#lot-input').val($(this).attr('id'));
+      $('#hourly').text($(this).siblings('.hourly').find('span').text());
+      $('#daily').text($(this).siblings('.daily').find('span').text());
+    });
 
-  $(document).on('click', '.select', function() {
-    $('#lot-input').val($(this).attr('id'));
+    $(document).on('change', '#parking-time', function() {
+      let timing = $('#time-type').val();
+      let rate = $(`#${timing}`).text();
+      if (timing == 'daily') {
+        rate = 1;
+      }
+      let total = $(this).val() * rate;
+      $('#total-due').val(total);
+    });
   });
 
   function onLocationFound(e) {

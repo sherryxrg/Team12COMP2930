@@ -16,6 +16,8 @@ router.get('/getAll', (req, res) => {
         long: l.long,
         number: l.number,
         company: l.company,
+        daily: l.rates.daily,
+        hourly: l.rates.hourly
       };
     });
     res.json({lots});

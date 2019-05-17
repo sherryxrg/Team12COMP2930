@@ -20,12 +20,16 @@
           <br>
           <div>
             <div class="label"><b>Lot #<%= lot.number %></b></div>
+            <div class="label"><b>Total: $<%= total %></b></div>
           </div>
         </div>
         <form action='/payment' method='POST'>
           <input type="hidden" value=<%= vehicle._id %> name='vehicle_id'>
           <input type="hidden" value=<%= card._id %> name='card_id'>
           <input type="hidden" value=<%= lot._id %> name='lot_id'>
+          <input type="hidden" value=<%= total %> name='total'>
+          <input type="hidden" value=<%= rate_type %> name='rate_type'>
+          <input type="hidden" value=<%= hours %> name='hours'>
           <input type='text' name='cvc'>
           <input type="submit">
         </form>
