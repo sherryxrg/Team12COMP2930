@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
       res.redirect('/register');
     } else {
       req.session.currentUser = user;
+      req.flash('success', 'You have successfully registered');
       res.redirect('/dashboard');
     }
   });
@@ -26,12 +27,14 @@ router.post('/', async (req, res) => {
       console.error(err);
       res.redirect('/login');
     }
-    if (!user || !Bcrypt.compareSync(req.body.password, user.password)) {
-      console.log(user);
+
+    if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
+      req.flash('success', 'Login failed');
       res.redirect('/login');
     } else {
-    req.session.currentUser = user;
-    res.redirect('/dashboard');
+      req.session.currentUser = user;
+      req.flash('success', 'You have successfully logged in');
+      res.redirect('/dashboard');
     }
   });
 });

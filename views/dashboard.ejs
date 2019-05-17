@@ -2,12 +2,19 @@
 <%- include('header') %>
 
 <div id='container'>
-    <div id='content'>
-      <div id="mapid"></div>
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-        crossorigin=""></script>
-        <script src="javascripts/map.js"></script>
+  <%  if (typeof success != 'undefined' && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show">
+    <%= success %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  <% } %>
+
+  <div id='white-space'>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    <script src="javascripts/map.js"></script>
 
   <!-- bottom half of page after map -->
       <div id='outline'>
@@ -64,15 +71,37 @@
             <script> var hours = document.getElementById("parking-time").value; </script>
             <p><script> document.write(hours) </script></p>
           </div>
-          <div id='payment' class='boxes'>
-            <h1 class='heading'>Amount due:</h1>
+
+        <div id='current-lot' class='boxes'>
+          <h1 class='heading'>Current lot:</h1>
+          <input type='text' id="lot-input" name='lot'>
+              <div id='lot-validation'>
+                <p>If lot does not exist in database, display error here.</p>
+              </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- parked until, type, pay -->
+      <div id='right-div'>
+        <div id='time-calc' class='boxes'>
+          <select id="time-type" name='rate-type' class='dropdown'>
+            <option value='rate-type' class='dropdown-opt'>Select rate type</option>
+            <option value='hourly' class='dropdown-opt'>hourly</option>
+            <option value='daily' class='dropdown-opt'>daily</option>
+          </select>
+          <br>
+        <h1 class='heading'>How many hours would you like to park for?</h1>
+          <input id='parking-time' type='number' name='hours' value=0>
+        </div>
+        <div id='payment' class='boxes'>
+          <h1 class='heading'>Amount due:</h1>
+            <span>$</span><input id="total-due" type='text' value=0 name="total">
             <h1 class='heading subhead'>HOURLY:</h1>
             <!-- need to multiply by hours entered above -->
-            <%= ratesHourly[0]%>
-            <h1 class='heading subhead'>DAILY:</h1>
-            <%= ratesDaily[0] %>
-          </div>
-          <input id='pay-button' type='submit' value='Pay'>
+            <span>$</span><span id="hourly">0.00</span>
+            <h1 class='heading subhead'>DAILY (until <%= date %>):</h1>
+            <span>$</span><span id="daily">0.00</span>
         </div>
       </form>
 

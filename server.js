@@ -9,6 +9,9 @@ const serveStatic = require('serve-static');
 // Import sass
 var sassMiddleware = require('node-sass-middleware');
 
+// flash messages library
+const flash = require('connect-flash');
+
 // Express default requires
 const createError = require('http-errors');
 
@@ -69,6 +72,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: process.env.SECRET,
+  currentUser: null
+}));
+app.use(flash());
 // SASS loader
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public/stylesheets/scss'),
@@ -79,10 +87,6 @@ app.use(sassMiddleware({
 }));
 // Sass loader must come before static dec.
 app.use('/', serveStatic(path.join(__dirname, 'public')));
-app.use(session({
-  secret: process.env.SECRET,
-  currentUser: null
-}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
