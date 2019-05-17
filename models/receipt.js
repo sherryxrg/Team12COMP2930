@@ -33,7 +33,7 @@ const receiptSchema = new mongoose.Schema({
   lot: {
     type: ObjectId,
     ref: 'Lot',
-    //required: true
+    required: true
   },
   card: {
     type: ObjectId,

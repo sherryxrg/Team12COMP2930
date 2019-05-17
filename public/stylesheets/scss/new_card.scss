@@ -17,3 +17,17 @@
   margin: 0 auto;
   padding: 10px;
 }
+
+.card {
+  border: none;
+}
+
+.total {
+  cursor: default;
+  user-select: none;
+}
+
+.total:hover {
+  cursor: default;
+  user-select: none;
+}

@@ -11,28 +11,29 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 const Card = models.Card;
 
-//Add a new card (payment option)
+//Create card (payment option)
 router.post('/', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     req.body.user = user._id;
     let card = new models.Card(req.body);
-    let result = await card.save();
-    res.redirect('/cards/success');
+    await card.save();
+    res.redirect('/dashboard');
   } else {
-    res.redirect('/login');;
+    res.redirect('/login');
   }
 });
 
 router.get('/success', async (req, res) => {
   const cards = await Card.find();
-  const newCard = cards[cards.length -1]
+  const newCard = cards[cards.length -1];
   res.render('new_card_added', {
     title: 'Card Registered',
     newCard
   });
 });
 
+//Cards index
 router.get('/all', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
@@ -55,13 +56,14 @@ router.get('/all', async (req, res) => {
   }
 });
 
+//New card
 router.get('/new', (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     let userName = {
       first_name: titleize(user.first_name),
       last_name: titleize(user.last_name)
-    }
+    };
     res.render('new_card', {
       user,
       userName,

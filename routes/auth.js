@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if (err) {
       console.error(err);
+      res.redirect('/login');
     }
 
     if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {

@@ -3,7 +3,6 @@
 
   <div id="container">
     <div id="center-field">
-      
 
       <h1 id='title'><%= title %></h1>
       <!-- alerts -->
@@ -13,24 +12,25 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
         </div>
       <% } %>
+      <!-- bootstrap login form -->
+      <div class="wrapper fadeInDown">
 
-        <!-- bootstrap login form -->
-        <div class="wrapper fadeInDown">
-          <div id="formContent">
-            <!-- Tabs Titles -->
-            <br>
-            <!-- Login Form -->
-            <form action='/auth' method='POST' >
-              <input type="text" id="login" class="fadeIn second" name="email" placeholder="login">
-              <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
-              <input type="submit" class="fadeIn fourth button" value="Log In">
-              <a href='/register'><input type='button' value='Sign-up' /></a>
-            </form>
-            <div id="formFooter">
-              <a class="underlineHover" href="#">Forgot Password?</a>
-            </div>
-
+        <div id="formContent">
+          <br>
+          <!-- Login Form -->
+          <form action='/auth' method='POST' >
+            <input type="text" id="login" class="fadeIn second" name="email" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth button" value="Log In">
+            <a href='/register'><input type='button' value='Sign-up' /></a>
+          </form>
+          <div id="formFooter">
+            <a class="underlineHover" href="#">Forgot Password?</a>
+          </div>
+        </div>
       </div>
+
+    </div>
   </div>
 
 <%- include('footer') -%>
