@@ -1,10 +1,11 @@
 <%- include('header') -%>
-<link rel='stylesheet' href='stylesheets/login.css'/>
+<link rel='stylesheet' href='/stylesheets/login.css'/>
 
   <div id="container">
     <div id="center-field">
-      <h1 id='title'><%= title %></h1>
+      
 
+      <h1 id='title'><%= title %></h1>
       <!-- alerts -->
       <%  if (typeof success != 'undefined' && success.length > 0) { %>
          <div class="alert alert-success alert-dismissible fade show">

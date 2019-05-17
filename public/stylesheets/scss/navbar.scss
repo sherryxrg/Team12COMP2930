@@ -29,6 +29,19 @@ a:hover {
   float: right;
 }
 
+#current-user {
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+  padding-right: 24px;
+  padding-left: 24px;
+  margin: 0px;
+  border-spacing: 0px;
+  float: right;
+  cursor: default;
+  user-select: none;
+}
+
 
 // brand
 #brand {

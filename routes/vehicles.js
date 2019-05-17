@@ -28,11 +28,18 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/all', async (req, res) => {
-  const vehicles = await Vehicle.find();
-  res.render('vehicle_list', {
-    title: 'Your Vehicles',
-    vehicles
-  });
+  let user = req.session.currentUser;
+  if (user) {
+    const vehicles = await Vehicle.find({
+      user: user._id
+    });
+    res.render('vehicle_list', {
+      title: 'Your Vehicles',
+      vehicles
+    });
+  } else {
+    res.send("Not logged in.");
+  }
 });
 
 module.exports = router;
