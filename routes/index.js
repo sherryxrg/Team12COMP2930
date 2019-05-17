@@ -39,14 +39,14 @@ router.get('/login', (req, res) => {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-  res.render('login', {
-    user,
-    userName,
-    title: 'Login'
-  });
-} else {
-  res.redirect('/login');
-}
+    res.render('login', {
+      user,
+      userName,
+      title: 'Login'
+    });
+  } else {
+    res.redirect('/login');
+  }
 
 });
 
@@ -189,9 +189,12 @@ router.get('/payment_success', async (req, res) => {
 });
 
 function titleize(s) {
-  const f = s.slice(0, 1);
-  const l = s.slice(1, s.length);
-  return f.toUpperCase() + l.toLowerCase();
+  if (s) {
+    const f = s.slice(0, 1);
+    const l = s.slice(1, s.length);
+    return f.toUpperCase() + l.toLowerCase();
+  }
+  return "";
 }
 
 module.exports = router;

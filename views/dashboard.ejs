@@ -2,12 +2,19 @@
 <%- include('header') %>
 
 <div id='container'>
-    <div id='white-space'>
-      <div id="mapid"></div>
-        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-        integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-        crossorigin=""></script>
-        <script src="javascripts/map.js"></script>
+  <%  if (typeof success != 'undefined' && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show">
+    <%= success %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  <% } %>
+
+  <div id='white-space'>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    <script src="javascripts/map.js"></script>
 
   <!-- bottom half of page after map -->
       <div id='outline'>
@@ -49,6 +56,7 @@
               </div>
         </div>
       </div>
+    </div>
 
     <!-- parked until, type, pay -->
       <div id='right-div'>
