@@ -1,5 +1,5 @@
 # parked
-Parking-payment app for 2930 project course
+Parking-payment app for 2930 projects course
 
 ## Mongoose + MongoDB, Node + Express, EJS + Bootstrap
 

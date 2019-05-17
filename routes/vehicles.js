@@ -16,23 +16,15 @@ router.post('/', async (req, res) => {
     req.body.user = user._id;
     let vehicle = new models.Vehicle(req.body);
     let result = await vehicle.save();
-    res.redirect('/vehicles/success');
+    req.flash('success', `You have added ${result.nickname} (${result.license_plate})`);
+    res.redirect('/dashboard');
   } else {
     res.send("Not logged in.");
   }
 });
 
-router.get('/', (req, res) => {
+router.get('/new', (req, res) => {
   res.render('new_vehicle', {title: 'Create a Vehicle'});
-});
-
-router.get('/success', async (req, res) => {
-  const vehicles = await Vehicle.find();
-  const newVehicle = vehicles[vehicles.length -1]
-  res.render('new_vehicle_added', {
-    title: 'Vehicle Registered',
-    newVehicle
-  });
 });
 
 router.get('/all', async (req, res) => {

@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
     let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
-    }
+    };
   res.render('index', { 
     title: 'Parked', 
     user: req.session.currentUser, 
@@ -38,14 +38,14 @@ router.get('/login', (req, res) => {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-  res.render('login', {
-    user,
-    userName,
-    title: 'Login'
-  });
-} else {
-  res.redirect('/login');
-}
+    res.render('login', {
+      user,
+      userName,
+      title: 'Login'
+    });
+  } else {
+    res.redirect('/login');
+  }
 
 });
 
@@ -119,8 +119,7 @@ router.post('/payment', async (req, res) => {
     let receipt = new models.Receipt();
     receipt.vehicle = req.body.vehicle_id;
     receipt.card = req.body.card_id;
-    receipt.user = user._id
-    console.log(receipt);
+    receipt.user = user._id;
     await receipt.save();
     Receipt.find({ _id: receipt._id}).populate('vehicle').populate('card').exec((err, receipts) => {
       res.render('receipt', {
@@ -161,9 +160,12 @@ router.get('/payment_success', async (req, res) => {
 });
 
 function titleize(s) {
-  const f = s.slice(0, 1);
-  const l = s.slice(1, s.length);
-  return f.toUpperCase() + l.toLowerCase();
+  if (s) {
+    const f = s.slice(0, 1);
+    const l = s.slice(1, s.length);
+    return f.toUpperCase() + l.toLowerCase();
+  }
+  return "";
 }
 
 module.exports = router;

@@ -2,13 +2,49 @@
 <%- include('header') %>
 
 <div id='container'>
-    <div id='white-space'>
-      <div id="mapid"></div>
-      <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""></script>
-      <script src="javascripts/map.js"></script>
+  <%  if (typeof success != 'undefined' && success.length > 0) { %>
+     <div class="alert alert-success alert-dismissible fade show">
+       <%= success %>
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+  <% } %>
 
+<!-- <<<<<<< HEAD
+  <div id='white-space'>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    <script src="javascripts/map.js"></script>
+
+<!-- bottom half of page after map -->
+    <div id='outline'>
+  <!-- vehicle, cards -->
+      <div id='left-div'>
+        <div id='vehicle-box' class='boxes'>
+          <select class='dropdown'>
+            <option value='select' class='dropdown-opt'>Select Vehicle:</option>
+            <% for (var i = 0; i < vehicles.length; i++) { %>
+              <option value=<%= vehicles[i] %> class="dropdown-opt">
+                <%= vehicles[i] %>
+              </option>
+            <% } %>
+          </select>
+          <a class='links' href='/vehicles/new'>+ Add a new vehicle</a>
+        </div>
+
+        <div id='payment-box' class='boxes'>
+          <select class='dropdown'>
+            <option value='select' class='dropdown-opt'>Select Card:</option>
+            <% for (var i = 0; i < cards.length; i++) { %>
+              <option value=<%= cards[i] %> class="dropdown-opt">
+                <%= cards[i] %>
+              </option>
+            <% } %>
+          </select>
+          <a class='links' href='#'>+ Add a new card</a>
+        </div>
+        ======= -->
   <!-- bottom half of page after map -->
       <div id='outline'>
       <form action='/payment' method='GET'>
@@ -39,14 +75,14 @@
             <a class='links' href='/cards/all'>Go to my cards</a>
           </div>
 
-        <div id='current-lot' class='boxes'>
-          <h1 class='heading'>Current lot:</h1>
-            <input type='text' pattern='[a-zA-Z0-9]'>
-              <div id='lot-validation'>
-                <p>If lot does not exist in database, display error here.</p>
-              </div>
+      <div id='current-lot' class='boxes'>
+        <h1 class='heading'>Current lot:</h1>
+        <input type='text' pattern='[a-zA-Z0-9]'>
+        <div id='lot-validation'>
+          <p>If lot does not exist in database, display error here.</p>
         </div>
       </div>
+    </div>
 
     <!-- parked until, type, pay -->
       <div id='right-div'>
