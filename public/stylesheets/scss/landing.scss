@@ -8,7 +8,7 @@
 }
 
 #container{
-  height: calc(260vh - 40px);
+  height: 100%;
   width: 100%;
   margin: 0 auto;
   padding: 0px;
@@ -78,12 +78,11 @@
   background-color: white;
   
 }
-.header{
+#header{
   color: white;
   font-family: 'karla';
   font-weight: 700;
   font-size: 60pt;
-  letter-spacing: 0.02em;
   margin-bottom: 100px;
   margin-top: 250px;
 }
@@ -100,14 +99,37 @@
   margin: auto;
   column-gap: 5%;
 }
+
+p {
+  color: white;
+}
+
 .about_bottom p,.about_top p{
   text-align: center;
-  color: 535353;
 }
-.name{
+
+#about-title {
+  font-family: 'Montserrat';
   color: white;
-  margin: 10px;
+  margin-bottom: 50px;
+  margin-top: 350px;
+  font-size: 50px;
 }
+
+#team {
+  font-family: 'karla';
+  font-size: 14pt;
+  padding-left: 120px;
+  padding-right: 120px;
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.name {
+  color: white;
+  margin-top: 10px;
+}
+
 
 
 
