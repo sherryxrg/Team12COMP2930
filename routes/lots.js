@@ -24,4 +24,27 @@ router.get('/getAll', (req, res) => {
   });
 });
 
+router.get('/find', (req, res) => {
+  let lat = req.query.lat;
+  let lng = req.query.long;
+  Lot.find({lat: lat, long: lng}).populate('company').exec((err, lots) => {
+    if (err) {
+      console.log(err);
+    }
+    let lot = lots[0];
+    res.json({
+      _id: lot._id,
+      name: lot.name,
+      rates: {
+        daily: lot.rates.daily,
+        hourly: lot.rates.hourly,
+      },
+      lat: lot.lat,
+      long: lot.long,
+      number: lot.number,
+      company: lot.company,
+    });
+  });
+});
+
 module.exports = router;
