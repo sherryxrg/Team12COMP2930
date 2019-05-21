@@ -10,9 +10,11 @@ body {
 #container {
   height: calc(100vh - 40px);
   @include allbg();
+  padding-top: 20px;
 }
 
 #white-space {
+  padding-top: 10px;
   background-color: white;
   width: 500px;
   height: 400px;

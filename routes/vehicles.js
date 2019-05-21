@@ -22,20 +22,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', (req, res) => {
-  res.render('new_vehicle', {title: 'Create a Vehicle'});
-});
-
-router.get('/success', async (req, res) => {
-  const vehicles = await Vehicle.find();
-  const newVehicle = vehicles[vehicles.length -1]
-  res.render('new_vehicle_added', {
-    title: 'Vehicle Registered',
-    newVehicle
-  });
-});
-
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     const vehicles = await Vehicle.find({
@@ -48,6 +35,28 @@ router.get('/all', async (req, res) => {
   } else {
     res.send("Not logged in.");
   }
+});
+
+router.get('/success', async (req, res) => {
+  const vehicles = await Vehicle.find();
+  const newVehicle = vehicles[vehicles.length -1]
+  res.render('new_vehicle_added', {
+    title: 'Vehicle Registered',
+    newVehicle
+  });
+});
+
+router.get('/new', (req, res) => {
+  res.render('new_vehicle', {title: 'Add Vehicle'});
+});
+
+router.post('/delete', async (req, res) => {
+  let v = req.body.vehicle_id;
+  console.log(v);
+  Vehicle.findByIdAndRemove(v, (err, vehicle) => {
+    if (err) return next(err);
+    res.redirect('/dashboard');
+  });
 });
 
 module.exports = router;
