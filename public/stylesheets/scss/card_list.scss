@@ -7,15 +7,14 @@
   height: 100vh;
   font-family: 'Montserrat';
   padding-top: 50px;
+  overflow: auto;
 }
 
 #content {
-  background-color: white;
   width: 400px;
-  height: 200px;
+  height: 30vh;
   margin: 0 auto;
   padding: 20px;
-  
 }
 
 #each-card {

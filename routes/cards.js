@@ -75,6 +75,14 @@ router.get('/new', (req, res) => {
   
 });
 
+router.post('/delete', (req, res) => {
+  let c = req.body.card_id;
+  Card.findByIdAndRemove(c, (err, card) => {
+    if (err) return next(err);
+    res.redirect('/dashboard');
+  });
+});
+
 function titleize(s) {
   const f = s.slice(0, 1);
   const l = s.slice(1, s.length);

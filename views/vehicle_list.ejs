@@ -2,16 +2,24 @@
 
 <link rel='stylesheet' href='/stylesheets/new_vehicle.css'/>
 
-<div id="center-field">
-  <div class="wrapper fadeInDown">
-    <div id="formContent">
-        <% for (var i = 0; i < vehicles.length; i++) { %>
-          <div class="label"><b>License Plate:</b> <%= vehicles[i].license_plate %></div>
-          <div class="label"><b>Nickname:</b> <%= vehicles[i].nickname %></div>
-          <div class="label"><b>Make/Brand:</b> <%= vehicles[i].make %></div>
-        <% } %>
-    </div>
+<div id="container">
+  <div id="content">
+    <% if (vehicles.length == 0) { %>
+      <h1 id="nothing-here">There's nothing here</h1>
+    <% } %>
+    <% for (var i = 0; i < vehicles.length; i++) { %>
+      <div id="each-vehicle">
+        <div class="label"><b>License Plate:</b> <%= vehicles[i].license_plate %></div>
+        <div class="label"><b>Nickname:</b> <%= vehicles[i].nickname %></div>
+        <div class="label"><b>Make/Brand:</b> <%= vehicles[i].make %></div>
+        <form action='/vehicles/delete' method="POST">
+          <input type='hidden' value=<%= vehicles[i]._id %> name='vehicle_id'>
+          <input type='submit' value="Delete">
+        </form>
+      </div>
+    <% } %>
   </div>
 </div>
+
 
 <%- include('footer') -%>
