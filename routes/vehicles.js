@@ -34,13 +34,13 @@ router.get('/', async (req, res) => {
       vehicles
     });
   } else {
-    res.send("Not logged in.");
+    res.redirect('/login');
   }
 });
 
 router.get('/success', async (req, res) => {
   const vehicles = await Vehicle.find();
-  const newVehicle = vehicles[vehicles.length -1]
+  const newVehicle = vehicles[vehicles.length -1];
   res.render('new_vehicle_added', {
     title: 'Vehicle Registered',
     newVehicle
