@@ -1,27 +1,176 @@
 @import 'vars';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-#container {
-  @include allbg();
-  height: 100vh;
-  font-family: 'Montserrat';
-  padding-top: 50px;
-  overflow: auto;
+@media only screen and (min-width: 501px) {
+  #container {
+    font-family: 'Montserrat';
+    @include allbg();
+    height: 100vh;
+    padding-top: 50px;
+  }
+
+  #content {
+    padding: 30px;
+    width: 600px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+  }
+
+  .field-unit {
+    margin: 15px;
+  }
+
+  #submit-button {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  /* bits from boostrap (mostly inputs) */
+  label {
+    text-align: center;
+  }
+
+  input[type=button], input[type=submit], input[type=reset]  {
+    background-color: $navbar-title-1;
+    border: none;
+    width: 430px;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color: $navbar-title-2;
+  }
+
+  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  input {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
 }
 
-#content {
-  width: 400px;
-  height: 30vh;
-  margin: 0 auto;
-  padding: 20px;
+@media only screen and (max-width: 500px) {
+  #container {
+    font-family: 'Montserrat';
+    @include allbg();
+    height: 100vh;
+    padding-top: 50px;
+  }
+
+  #content {
+    padding: 30px;
+    width: 450px;
+    height: auto;
+    margin: 0 auto;
+    text-align: center;
+    background-color: white;
+  }
+
+  .field-unit {
+    margin: 4px;
+  }
+
+  #submit-button {
+    margin-top: 50px;
+    margin-bottom: 10px;
+  }
+
+  /* bits from boostrap (mostly inputs) */
+  label {
+    text-align: center;
+  }
+
+  input[type=button], input[type=submit], input[type=reset]  {
+    background-color: $navbar-title-1;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color: $navbar-title-2;
+  }
+
+  input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  input {
+    background-color: #f6f6f6;
+    border: none;
+    color: #0d0d0d;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+    width: 85%;
+    border: 2px solid #f6f6f6;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+  }
 }
 
-#each-vehicle {
-  background-color: white;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  @include gentleoutline();
-}
+
+

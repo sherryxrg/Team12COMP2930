@@ -26,20 +26,19 @@ router.get('/', function(req, res, next) {
     user: req.session.currentUser, 
     userName
   });
-}
-
+  }
 });
 
 // Login page
 router.get('/login', (req, res) => {
   res.render('login', {title: 'Login'});
-  if (req.session.currentUser) {
-    let user = req.session.currentUser;
+  let user = req.session.currentUser;
+  if (user) {
     let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
     };
-    res.render('login', {
+ res.render('login', {
       user,
       userName,
       title: 'Login'
