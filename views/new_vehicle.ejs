@@ -6,16 +6,16 @@
   <div id="content">
     <form action="/vehicles" method="POST">
       <div class='field-unit'>
-        <label>License Plate</label>
-        <input name="license_plate">
+        <label>License Plate*</label>
+        <input name="license_plate" required='required'>
       </div>
       <div class='field-unit'>
         <label>Nickname</label>
         <input name="nickname">
       </div>
       <div class='field-unit'>
-        <label>Make/Brand</label>
-        <input name="make">
+        <label>Make/Brand*</label>
+        <input name="make" required='required'>
       </div>
       <input id='submit-button' type="submit">
     </form>

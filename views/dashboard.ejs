@@ -16,7 +16,7 @@
           <div id='left-div'>
             <div id='vehicle-box' class='boxes'>
               <select name='vehicle' class='dropdown'>
-                <option value='select' class='dropdown-opt'>Select Vehicle</option>
+                <option value='select' class='dropdown-opt'>Select Vehicle *</option>
                 <% for (var i = 0; i < vehicles.length; i++) { %>
                   <option value=<%= vehicles[i]._id %> class="dropdown-opt">
                     <%= vehicles[i].nickname %>
@@ -25,10 +25,12 @@
               </select>
               <br>
               <a class='links' href='/vehicles'>+ Add a new vehicle</a>
+              <p style="display:inline;">|</p>
+              <a class='links' href='/cards/all'> Go to my vehicles</a>
             </div>
             <div id='card-box' class='boxes'>
               <select name='card' class='dropdown'>
-              <option name='card' value='select' class='dropdown-opt'>Select Card</option>
+              <option name='card' value='select' class='dropdown-opt'>Select Card *</option>
               <% for (var i = 0; i < cards.length; i++) { %>
                   <option value=<%= cards[i]._id %> class="dropdown-opt">
                     <%= cards[i].number %>
@@ -42,11 +44,8 @@
             </div>
 
           <div id='current-lot' class='boxes'>
-            <h1 class='heading'>Current lot:</h1>
+            <h1 class='heading'>Current lot *:</h1>
               <input type='text' pattern='[a-zA-Z0-9]'>
-                <div id='lot-validation'>
-                  <p>If lot does not exist in database, display error here.</p>
-                </div>
           </div>
         </div>
 
@@ -54,12 +53,12 @@
         <div id='right-div'>
           <div id='time-calc' class='boxes'>
             <select id="time-type" class='dropdown'>
-              <option value='rate-type' name='rate-type' class='dropdown-opt'>Select rate type</option>
+              <option value='rate-type' name='rate-type' class='dropdown-opt'>Select rate type *</option>
               <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
               <option value='daily' name='daily' class='dropdown-opt'>daily</option>
             </select>
             <br>
-            <h1 class='heading'>How many hours would you like to park for?</h1>
+            <h1 class='heading'>How many hours would you like to park for? *</h1>
             <input id='parking-time' type='number'>
             <script> var hours = document.getElementById("parking-time").value; </script>
             <p><script> document.write(hours) </script></p>
@@ -80,3 +79,4 @@
   </div>
 </div>
 <%- include('footer') %>
+
