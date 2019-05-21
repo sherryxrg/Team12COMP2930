@@ -16,7 +16,8 @@ router.post('/', async (req, res) => {
     req.body.user = user._id;
     let vehicle = new models.Vehicle(req.body);
     let result = await vehicle.save();
-    res.redirect('/vehicles/success');
+    req.flash('success', `You have added ${result.nickname} (${result.license_plate})`);
+    res.redirect('/dashboard');
   } else {
     res.send("Not logged in.");
   }
