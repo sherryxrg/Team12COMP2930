@@ -42,7 +42,7 @@ const lotSchema = new mongoose.Schema({
 });
 
 function getRate(num) {
-return (num/100).toFixed(2);
+  return (num/100).toFixed(2);
 }
 
 lotSchema.pre('save', function(next) {
