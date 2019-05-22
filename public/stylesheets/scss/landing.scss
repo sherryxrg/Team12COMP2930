@@ -1,0 +1,135 @@
+@import 'vars';
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#container{
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px;
+  @include allbg();
+}
+
+#content{
+  text-align: center;
+  height: 100%;
+  padding: 190px;
+}
+
+#title {
+  color: white;
+  font-family: 'karla';
+  font-weight: 700;
+  font-size: 90pt;
+  letter-spacing: 0.02em;
+  margin-bottom: 0px;
+}
+
+#subtitle {
+  color: white;
+  font-family: 'Montserrat';
+  font-weight: 100;
+  font-size: 22pt;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+#btn {
+  padding: 14px;
+  margin: 42px;
+  font-family: 'Montserrat';
+  background-color: rgba(255,255,255, 0.1);
+  border-style: none;
+  color: white;
+  font-weight: 600;
+}
+
+#btn a {
+  color: white;
+  text-decoration: none;
+}
+
+#btn a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+#btn:hover {
+  background-color: rgba(255,255,255, 0.2);
+}
+
+#about-us {
+  height: 600px;
+  width: 800px;
+  text-align: center;
+  color: white;
+  column-count: 2;
+}
+
+.john,.estevan,.kush,.sherry,.steven{
+  width: 200px;
+  border-radius: 50%;
+  border: white solid 5px;
+  background-color: white;
+  
+}
+#header{
+  color: white;
+  font-family: 'karla';
+  font-weight: 700;
+  font-size: 60pt;
+  margin-bottom: 100px;
+  margin-top: 250px;
+}
+.about_top{
+  column-count: 3;
+  width: 100%;
+  column-width: 25%;
+  column-gap: 5%
+    
+}
+.about_bottom {
+  column-count: 2;
+  width: 63%;
+  margin: auto;
+  column-gap: 5%;
+}
+
+p {
+  color: white;
+}
+
+.about_bottom p,.about_top p{
+  text-align: center;
+}
+
+#about-title {
+  font-family: 'Montserrat';
+  color: white;
+  margin-bottom: 50px;
+  margin-top: 350px;
+  font-size: 50px;
+}
+
+#team {
+  font-family: 'karla';
+  font-size: 14pt;
+  padding-left: 120px;
+  padding-right: 120px;
+  margin-bottom: 80px;
+  text-align: left;
+}
+
+.name {
+  color: white;
+  margin-top: 10px;
+}
+
+
+
+
