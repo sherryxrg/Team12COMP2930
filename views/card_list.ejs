@@ -12,6 +12,10 @@
             <div class="label"><b>Number:</b> <%= cards[i].number %></div>
             <div class="label"><b>Expiry Month:</b> <%= cards[i].expiry_month %></div>
             <div class="label"><b>Expiry Year:</b> <%= cards[i].expiry_year %></div>
+            <form id='delete' action='/cards/delete' method="POST">
+              <input type='hidden' value=<%= cards[i]._id %> name='card_id'>
+              <input type='submit' value="Delete">
+            </form>
           </div>
           <hr>
         <% } %>
