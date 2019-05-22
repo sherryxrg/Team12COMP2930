@@ -99,7 +99,7 @@ router.get('/payment', async (req, res) => {
   let lot = req.query.lot;
   let total = req.query.total;
   let rate_type = req.query['rate-type'];
-  let hours = req.body.hours;
+  let hours = req.query.hours;
   console.log(vehicle);
   if (card && vehicle) {
     let c = await Card.findById(card);
@@ -134,9 +134,10 @@ router.post('/payment', async (req, res) => {
     receipt.start_time = new Date();
     let rate_type = req.body.rate_type;
     let hours = req.body.hours;
+    console.log(hours);
     let end_time = new Date();
     if (rate_type == 'hourly') {
-      end_time.setTime(end_time.getTime() + (60*60*1000));
+      end_time.setTime(end_time.getTime() + (hours * 60*60*1000));
       //Error cannot cast to Date
       receipt.end_time = end_time;
     } else if (rate_type == 'daily') {
@@ -144,7 +145,6 @@ router.post('/payment', async (req, res) => {
       //Error cannot cast to Date
       receipt.end_time = end_time;
     }
-    console.log(receipt);
     await receipt.save();
     Receipt.find({ _id: receipt._id}).populate('vehicle').populate('card').populate('lot').exec((err, receipts) => {
       res.render('receipt', {
@@ -164,7 +164,8 @@ router.get('/current', async (req, res) => {
     end_time: {
       $gt: date,
     }
-  }).sort({ end_time: -1 }).exec((err, docs) => {
+  }).populate('vehicle').populate('card').populate('lot')
+    .sort({ end_time: -1 }).exec((err, docs) => {
     if (err) return (err);
     const receipt = docs[0];
     res.render('receipt', {
