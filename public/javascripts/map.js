@@ -1,6 +1,30 @@
 let LOCATION = false;
 
 $(document).ready(function() {
+
+  $('#time-type').on('change', function() {
+    if ($(this).val() == "daily") {
+      $('#total-due').prop('readonly', true);
+      $('#parking-time').prop('readonly', true);
+      $('#total-due').val($('#daily').text());
+    } else {
+      $('#total-due').prop('readonly', false);
+      $('#parking-time').prop('readonly', false);
+      $('#total-due').val($('#hourly').text() * $('#parking-time').val());
+    }
+  });
+
+  $('#lot-input').on('change', function() {
+    console.log('fuck');
+    let timing = $('#time-type').val();
+    let rate = $(`#${timing}`).text();
+    if (timing == 'daily') {
+      rate = 1;
+    }
+    let total = $(this).val() * rate;
+    $('#total-due').val(total);
+  });
+
   var map = L.map('mapid');
 
   map.locate({
@@ -40,7 +64,6 @@ $(document).ready(function() {
       map.eachLayer((layer) => {
         if (layer._latlng && layer._latlng != LOCATION) {
           let ll = layer._latlng;
-          console.log(ll);
           let x = Math.abs(ll.lat - LOCATION.lat);
           let y = Math.abs(ll.lng - LOCATION.lng);
           delta2 = Math.sqrt(x*x + y*y);
@@ -54,7 +77,6 @@ $(document).ready(function() {
       map.flyTo(l, 15);
       $.get(`/lots/find?lat=${l.lat}&long=${l.lng}`, (data) => {
         let lot = data;
-        console.log(lot);
         m.bindPopup(`<h5>Closest Lot</h5>` +
           `<p>${lot.name}</p>` +
           `<p>Lot#${lot.number}</p>` +
