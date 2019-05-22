@@ -4,22 +4,25 @@
 
 
 <div id="container">
-  <div id="content">
-    <form action="/vehicles" method="POST">
-      <div class='field-unit'>
-        <label>License Plate*</label>
-        <input name="license_plate" required='required'>
-      </div>
-      <div class='field-unit'>
-        <label>Nickname</label>
-        <input name="nickname">
-      </div>
-      <div class='field-unit'>
-        <label>Make/Brand*</label>
-        <input name="make" required='required'>
-      </div>
-      <input id='submit-button' type="submit">
-    </form>
+  <div id='content-wrapper'>
+  <h1 id='title'>Add a Vehicle</h1>
+    <div id="content">
+      <form action="/vehicles" method="POST">
+        <div class='field-unit'>
+          <label>License Plate*</label>
+          <input name="license_plate" required='required'>
+        </div>
+        <div class='field-unit'>
+          <label>Nickname*</label>
+          <input name="nickname">
+        </div>
+        <div class='field-unit'>
+          <label>Make/Brand*</label>
+          <input name="make" required='required'>
+        </div>
+        <input id='submit-button' type="submit" value='Add'>
+      </form>
+    </div>
   </div>
 </div>
 

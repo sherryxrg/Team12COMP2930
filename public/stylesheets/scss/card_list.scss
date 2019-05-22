@@ -6,11 +6,19 @@
   @include allbg();
   height: 100vh;
   font-family: 'Montserrat';
-  padding-top: 50px;
-  overflow: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#content-wrapper {
+  width: 500px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 #content {
+  background-color: white;
   width: 400px;
   height: 500px;
   margin: 0 auto;
@@ -27,6 +35,20 @@
   padding: 20px;
   @include gentleoutline();
 }
+
+.label {
+  color: black;
+  display: block;
+  text-align: left;
+  font-size: 12pt;
+  font-weight: 400;
+}
+
+#title {
+  color: white;
+  font-size: 32pt;
+  margin-left: 28px;
+ }
 
 #back-buttons {
   width: 400px;
