@@ -41,7 +41,7 @@ router.get('/success', async (req, res) => {
 });
 
 //Cards index
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
     let user = req.session.currentUser;

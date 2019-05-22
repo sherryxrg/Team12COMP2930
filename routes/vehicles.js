@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
       userName,
     });
   } else {
-    res.send("Not logged in.");
+    res.redirect('/login');
   }
 });
 
