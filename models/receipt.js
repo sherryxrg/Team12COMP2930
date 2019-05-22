@@ -19,11 +19,9 @@ const receiptSchema = new mongoose.Schema({
   },
   start_time: {
     type: Date,
-    //required: true
   },
   end_time: {
     type: Date,
-    //required: true
   },
   user: {
     type: ObjectId,
@@ -43,7 +41,6 @@ const receiptSchema = new mongoose.Schema({
   price: {
     type: Currency,
     get: getPrice,
-    //required: true
   }
 });
 

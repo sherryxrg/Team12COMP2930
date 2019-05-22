@@ -4,6 +4,7 @@ import models from '../models/';
 
 const Lot = models.Lot;
 
+//Get all lots
 router.get('/getAll', (req, res) => {
   Lot.find().populate('company').exec((err, results) => {
     if (err) {
@@ -24,6 +25,7 @@ router.get('/getAll', (req, res) => {
   });
 });
 
+//Find lot
 router.get('/find', (req, res) => {
   let lat = req.query.lat;
   let lng = req.query.long;

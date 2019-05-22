@@ -2,7 +2,6 @@ $(document).ready(function () {
   var count = 0;
   $(".car").on( "click", function(e) {
     e.preventDefault();
-    console.log(".car");
     $('.car').addClass('animated');
     setTimeout(() => { $('.car').removeClass('animated');}, 600);
     count++;
@@ -42,6 +41,7 @@ document.addEventListener('mousedown', () => clicked = true);
 document.addEventListener('mouseup', () => clicked = false);
 main.addEventListener('click', e => explode(e, options));
 
+//Car explosion animation
 function explode(e, options) {
   const container = document.createElement('div');
   container.classList.add('particles-container');
@@ -72,10 +72,12 @@ function explode(e, options) {
 	}
   }
   
+  //Changes angle of particles
   function randomAngleBetween(minAngle, maxAngle) {
 	return (Math.random() * (maxAngle - minAngle) + minAngle) / 180 * Math.PI - Math.PI/2;
   }
 
+  //Handles input based on duration
   function handleInput() {
     const option = this.dataset.option;
     options[option] = this.value;

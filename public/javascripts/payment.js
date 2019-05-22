@@ -1,4 +1,5 @@
 $(function() {
+  //Form validation
   $('form.require-validation').bind('submit', function(e) {
     var $form         = $(e.target).closest('form'),
         inputSelector = ['input[type=email]', 'input[type=password]',
@@ -23,7 +24,7 @@ $(function() {
 
 $(function() {
   var $form = $("#payment-form");
-
+  
   $form.on('submit', function(e) {
     if (!$form.data('cc-on-file')) {
       e.preventDefault();

@@ -2,6 +2,7 @@ let LOCATION = false;
 
 $(document).ready(function() {
 
+  //Bind input properties to time-type input
   $('#time-type').on('change', function() {
     if ($(this).val() == "daily") {
       $('#total-due').prop('readonly', true);
@@ -14,8 +15,8 @@ $(document).ready(function() {
     }
   });
 
+  //Bind total input to lot number input
   $('#lot-input').on('change', function() {
-    console.log('fuck');
     let timing = $('#time-type').val();
     let rate = $(`#${timing}`).text();
     if (timing == 'daily') {
@@ -26,7 +27,7 @@ $(document).ready(function() {
   });
 
   var map = L.map('mapid');
-
+//Find user location
   map.locate({
     setView: true,
     maxZoom: 16,
@@ -34,17 +35,17 @@ $(document).ready(function() {
     enableHighAccuracy: true,
     timeout: 100000000,
   });
-
+//Get OSM data
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
-
+//Find rates for selected lot
   $(document).on('click', '.select', function() {
     $('#lot-input').val($(this).attr('id'));
     $('#hourly').text($(this).siblings('.hourly').find('span').text());
     $('#daily').text($(this).siblings('.daily').find('span').text());
   });
-
+//Parking time change, calculate total
   $(document).on('change', '#parking-time', function() {
     let timing = $('#time-type').val();
     let rate = $(`#${timing}`).text();
@@ -54,7 +55,7 @@ $(document).ready(function() {
     let total = $(this).val() * rate;
     $('#total-due').val(total);
   });
-
+//Find closest lot
   $(document).on('click', '#find_lot', function() {
     if (LOCATION) {
       let l = LOCATION;
@@ -74,6 +75,7 @@ $(document).ready(function() {
           }
         }
       });
+      //Pan to closest lot
       map.flyTo(l, 15);
       $.get(`/lots/find?lat=${l.lat}&long=${l.lng}`, (data) => {
         let lot = data;
@@ -90,7 +92,7 @@ $(document).ready(function() {
       });
     }
   });
-
+//User location found hook
   function onLocationFound(e) {
     var radius = e.accuracy / 2;
 
@@ -117,7 +119,7 @@ $(document).ready(function() {
     });
 
   }
-
+//Bind location found to map
   map.on('locationfound', onLocationFound);
 
   function onLocationError(e) {

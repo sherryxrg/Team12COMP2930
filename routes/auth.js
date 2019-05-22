@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
       console.error(err);
       res.redirect('/login');
     }
-
+    //Validate password with Bcrypt
     if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
       req.flash('success', 'Login failed');
       res.redirect('/login');

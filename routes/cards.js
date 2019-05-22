@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+//Payment success
 router.get('/success', async (req, res) => {
   const cards = await Card.find();
   const newCard = cards[cards.length -1];
@@ -82,6 +83,7 @@ router.get('/new', (req, res) => {
   
 });
 
+//Delete card
 router.post('/delete', (req, res) => {
   let c = req.body.card_id;
   Card.findByIdAndRemove(c, (err, card) => {
@@ -90,6 +92,7 @@ router.post('/delete', (req, res) => {
   });
 });
 
+//Format full name
 function titleize(s) {
   const f = s.slice(0, 1);
   const l = s.slice(1, s.length);

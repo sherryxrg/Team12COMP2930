@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
   }
 });
 
+//Vehicles
 router.get('/', async (req, res) => {
   let user = req.session.currentUser;
   let userName = {
@@ -44,6 +45,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//Added vehicle
 router.get('/success', async (req, res) => {
   const user = req.session.currentUser;
   let userName = {
@@ -60,6 +62,7 @@ router.get('/success', async (req, res) => {
   });
 });
 
+//Add new vehicle
 router.get('/new', (req, res) => {
   const user = req.session.currentUser;
   let userName = {
@@ -73,15 +76,16 @@ router.get('/new', (req, res) => {
   });
 });
 
+//Delete vehicle
 router.post('/delete', async (req, res) => {
   let v = req.body.vehicle_id;
-  console.log(v);
   Vehicle.findByIdAndRemove(v, (err, vehicle) => {
     if (err) return next(err);
     res.redirect('/dashboard');
   });
 });
 
+//Format name
 function titleize(s) {
   const f = s.slice(0, 1);
   const l = s.slice(1, s.length);

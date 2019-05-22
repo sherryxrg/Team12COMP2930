@@ -6,15 +6,9 @@ const Receipt = models.Receipt;
 
 //Create receipt
 router.post('/', async (req, res) => {
-  //let user = req.session.currentUser;
-  //if (user) {
-    //req.body.user = user._id;
-    let receipt = new models.Receipt(req.body);
-    let result = await receipt.save();
-    res.send(result);
-  //} else {
-    //res.send("Not logged in.");
-  //}
+  let receipt = new models.Receipt(req.body);
+  let result = await receipt.save();
+  res.send(result);
 });
 
 //Get receipt

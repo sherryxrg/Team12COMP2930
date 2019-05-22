@@ -22,12 +22,13 @@ const userSchema = new mongoose.Schema({
   vehicles: [{ type: ObjectId , ref: 'Vehicle' }]
 });
 
-// Kill orphans
+//Remove orphan vehicles
 userSchema.pre('remove', function(next) {
   Vehicle.remove({user: this}).exec();
   next();
 });
 
+//Format name and email before saving
 userSchema.pre('save', function(next) {
   this.first_name = this.first_name.toLowerCase();
   this.last_name = this.last_name.toLowerCase();
