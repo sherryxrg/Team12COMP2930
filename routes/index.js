@@ -80,18 +80,6 @@ router.get('/dashboard', async (req, res) => {
   }
 });
 
-/* Landing
-router.get('/landing', (req, res) => {
-  let user = null;
-  user = req.session.currentUser;
-  if (user) {
-    res.render('landing', { user: user, title: "Landing" });
-  } else {
-    res.redirect('/login');
-  }
-});
-*/
-
 // Register
 router.get('/register', (req, res) => {
   res.render('register', { title: 'Register' });
@@ -99,6 +87,12 @@ router.get('/register', (req, res) => {
 
 // Payment
 router.get('/payment', async (req, res) => {
+  if (req.session.currentUser) {
+    let user = req.session.currentUser;
+    let userName = {
+      first_name: titleize(req.session.currentUser.first_name),
+      last_name: titleize(req.session.currentUser.last_name),
+    };
   let card = req.query.card;
   console.log(req.query.card);
   let vehicle = req.query.vehicle;
@@ -112,6 +106,8 @@ router.get('/payment', async (req, res) => {
     let v = await Vehicle.findById(vehicle);
     let l = await Lot.findOne({number: lot});
     res.render('payment', {
+      user,
+      userName,
       title: 'Payment',
       card: c,
       vehicle: v,
@@ -121,6 +117,7 @@ router.get('/payment', async (req, res) => {
       hours
     });
   }
+}
 
 });
 

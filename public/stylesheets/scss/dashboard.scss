@@ -18,6 +18,8 @@
     height: auto;
     @include allbg();
     padding-top: 50px;
+    padding-bottom: 40px;
+    border-radius: 5px 5px 5px 5px;
   }
 
   #content {

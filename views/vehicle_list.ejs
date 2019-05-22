@@ -1,23 +1,31 @@
 <%- include('header') -%>
 
-<link rel='stylesheet' href='/stylesheets/new_vehicle.css'/>
+<link rel='stylesheet' href='/stylesheets/vehicle_list.css'/>
 
 <div id="container">
-  <div id="content">
-    <% if (vehicles.length == 0) { %>
-      <h1 id="nothing-here">There's nothing here</h1>
-    <% } %>
-    <% for (var i = 0; i < vehicles.length; i++) { %>
-      <div id="each-vehicle">
-        <div class="label"><b>License Plate:</b> <%= vehicles[i].license_plate %></div>
-        <div class="label"><b>Nickname:</b> <%= vehicles[i].nickname %></div>
-        <div class="label"><b>Make/Brand:</b> <%= vehicles[i].make %></div>
-        <form action='/vehicles/delete' method="POST">
-          <input type='hidden' value=<%= vehicles[i]._id %> name='vehicle_id'>
-          <input type='submit' value="Delete">
-        </form>
-      </div>
-    <% } %>
+  <div id='content-wrapper'>
+  <h1 id='title'>My Vehicles</h1>
+    <div id="content">
+      <% if (vehicles.length == 0) { %>
+        <h1 id="nothing-here">There's nothing here</h1>
+      <% } %>
+      <% for (var i = 0; i < vehicles.length; i++) { %>
+        <div id="each-vehicle">
+          <div class="label"><b>License Plate:</b> <%= vehicles[i].license_plate %></div>
+          <div class="label"><b>Nickname:</b> <%= vehicles[i].nickname %></div>
+          <div class="label"><b>Make/Brand:</b> <%= vehicles[i].make %></div>
+          <form id='delete' action='/vehicles/delete' method="POST">
+            <input type='hidden' value=<%= vehicles[i]._id %> name='vehicle_id'>
+            <input type='submit' value="Delete">
+          </form>
+          <hr>
+        </div>
+      <% } %>
+    </div>
+    <div id='back-buttons'>
+      <a href='/vehicles/new'><button>Add a new vehicle</button></a>
+      <a href='/../dashboard'><button>Return to Dashboard</a>
+    </div>
   </div>
 </div>
 
