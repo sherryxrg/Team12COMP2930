@@ -4,69 +4,60 @@
 
 @media only screen and (min-width: 501px) {
   #container {
-    @include allbg();
-    height: 100vh;
     font-family: 'Montserrat';
+    margin: 0px;
+    padding: 0px;
     width: 100vw;
-    padding-top: 50px;
+    height: 100%;
+    @include allbg();
+    padding-bottom: 40px;
+    border-radius: 5px 5px 5px 5px;
   }
 
   #content-wrapper {
     width: 500px;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     padding: 20px;
   }
 
   #content {
     background-color: white;
+    font-size: 14pt;
     width: 500px;
     height: auto;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
+    @include diffuseshadow();
+  }
+
+  #each-vehicle {
+    margin: 10px;
+  }
+
+  #delete {
+    text-align: right;
+  }
+
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
   }
 
   #title {
-    color: white;
-    font-size: 32pt;
+  color: white;
+  font-size: 32pt;
   }
-
-  .card {
-    border: none;
-  }
-
-  .total {
-    cursor: default;
-    user-select: none;
-  }
-
-  .total:hover {
-    cursor: default;
-    user-select: none;
-  }
-
 
   // button styling
-
-  .submit-button {
-    background-color: $lavender;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .submit-button:hover {
-    background-color: $navbar-title-2;
-  }
-
-  .submit-button:active {
-    transform: scale(0.95);
-  }
-
   button, input[type=button], input[type=submit], input[type=reset]  {
     background-color: $navbar-title-1;
     border: none;
     color: white;
     padding: 10px 40px;
-    margin: 0px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -74,9 +65,7 @@
     font-size: 12px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 5px 20px 20px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -96,84 +85,84 @@
     transform: scale(0.95);
   }
 
-  button {
-    color: white;
+  #back-buttons {
+    width: inherit;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
   }
 
-  button a {
+  #back-buttons button {
     color: white;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 70px;
   }
 
-  .col-md-4 {
-    padding: 0px;
+  #back-buttons a {
+    color: white;
   }
 }
 
 @media only screen and (max-width: 500px) {
   #container {
-    @include allbg();
-    height: 100vh;
     font-family: 'Montserrat';
+    margin: 0px;
+    padding: 0px;
     width: 100vw;
+    height: 100%;
+    @include allbg();
+    padding-bottom: 40px;
     padding-top: 50px;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
   }
 
   #content-wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     padding: 20px;
   }
 
   #content {
     background-color: white;
+    font-size: 14pt;
     width: auto;
     height: auto;
     margin: 0 auto;
-    padding: 10px;
+    padding: 20px;
+    @include diffuseshadow();
+  }
+
+  #each-vehicle {
+    margin: 10px;
+  }
+
+  #delete {
+    text-align: right;
+  }
+
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
   }
 
   #title {
-    color: white;
-    font-size: 32pt;
+  color: white;
+  font-size: 32pt;
   }
-
-  .card {
-    border: none;
-  }
-
-  .total {
-    cursor: default;
-    user-select: none;
-  }
-
-  .total:hover {
-    cursor: default;
-    user-select: none;
-  }
-
 
   // button styling
-
-  .submit-button {
-    background-color: $lavender;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .submit-button:hover {
-    background-color: $navbar-title-2;
-  }
-
-  .submit-button:active {
-    transform: scale(0.95);
-  }
-
   button, input[type=button], input[type=submit], input[type=reset]  {
     background-color: $navbar-title-1;
     border: none;
     color: white;
     padding: 10px 40px;
-    margin: 0px;
+    margin-top: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -181,9 +170,7 @@
     font-size: 12px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 5px 20px 20px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -203,15 +190,22 @@
     transform: scale(0.95);
   }
 
-  button {
-    color: white;
+  #back-buttons {
+    width: inherit;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
   }
 
-  button a {
+  #back-buttons button {
     color: white;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
   }
 
-  .col-md-4 {
-    padding: 0px;
+  #back-buttons a {
+    color: white;
   }
 }
+

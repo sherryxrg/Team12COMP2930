@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 /* Destop version */
-@media only screen and (min-width: 501px) {
+@media only screen and (min-width: 415px) {
 
   #nav-bar {
     font-family: 'Montserrat';
@@ -75,7 +75,7 @@
 }
 
 /* Mobile responsive */
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 450px) {
 
   #nav-bar {
     font-family: 'Montserrat';
@@ -97,11 +97,13 @@
     height: 100%;
     text-align: center;
     padding: 20px;
-    padding-right: 14px;
-    padding-left: 14px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin: 0px;
     border-spacing: 0px;
     float: right;
+    padding-bottom: 0px;
+    font-size: 14px;
   }
 
   #current-user {
@@ -110,11 +112,13 @@
     padding: 20px;
     padding-right: 24px;
     padding-left: 24px;
+    padding-bottom: 0px;
     margin: 0px;
     border-spacing: 0px;
     float: right;
     cursor: default;
     user-select: none;
+    font-size: 14px;
   }
 
   // brand
@@ -125,7 +129,7 @@
     font-weight: 700;
     font-size: 20pt;
     padding: 10px;
-    padding-right: 24px;
+    padding-right: 0px;
     padding-left: 24px;
   }
 
@@ -145,3 +149,4 @@
     
   }
 }
+
