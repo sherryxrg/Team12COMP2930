@@ -54,7 +54,7 @@
         <div id='right-div'>
         <div id='current-lot' class='boxes'>
           <h1 class='heading'>Current lot:</h1>
-          <input type='text' id="lot-input" name='lot' required>
+          <input type='text' id="lot-input" name='lot' readonly required>
           <button id="find_lot">Select Closest Lot</button>
         </div>
             <div id='time-calc' class='boxes'>
@@ -69,7 +69,7 @@
         </div>
         <div id='payment' class='boxes'>
           <h1 class='heading'>Amount due:</h1>
-            <span>$</span><input id="total-due" type='text' value='0' name="total" disabled>
+            <span>$</span><input id="total-due" type='text' value='0' name="total" readonly>
             <h1 class='heading subhead'>HOURLY:</h1>
             <!-- need to multiply by hours entered above -->
             <span>$</span><span id="hourly">0.00</span>
