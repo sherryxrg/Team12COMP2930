@@ -3,19 +3,27 @@
 <link rel='stylesheet' href='/stylesheets/card_list.css'/>
 
 <div id="container">
-  <div id="content">
-    <% for (var i = 0; i < cards.length; i++) { %>
-      <div id='each-card'>
-        <div class="label"><b>Name:</b> <%= cards[i].name %></div>
-        <div class="label"><b>Number:</b> <%= cards[i].number %></div>
-        <div class="label"><b>Expiry Month:</b> <%= cards[i].expiry_month %></div>
-        <div class="label"><b>Expiry Year:</b> <%= cards[i].expiry_year %></div>
-        <form action="/cards/delete" method="POST">
-          <input name="card_id" type="hidden" value=<%= cards[i]._id %>>
-          <input type="Submit" value="Delete">
-        </form>
-      </div>
-    <% } %>
+  <div id='content-wrapper'>
+  <h1 id='title'>My Cards</h1>
+    <div id="content">
+        <% for (var i = 0; i < cards.length; i++) { %>
+          <div id='each-card'>
+            <div class="label"><b>Name:</b> <%= cards[i].name %></div>
+            <div class="label"><b>Number:</b> <%= cards[i].number %></div>
+            <div class="label"><b>Expiry Month:</b> <%= cards[i].expiry_month %></div>
+            <div class="label"><b>Expiry Year:</b> <%= cards[i].expiry_year %></div>
+            <form id='delete' action='/cards/delete' method="POST">
+              <input type='hidden' value=<%= cards[i]._id %> name='card_id'>
+              <input type='submit' value="Delete">
+            </form>
+          </div>
+          <hr>
+        <% } %>
+    </div>
+    <div id='back-buttons'>
+      <a href='/cards/new'><button>Add a new card</button></a>
+      <a href='/../dashboard'><button>Return to Dashboard</a>
+    </div>
   </div>
 </div>
 

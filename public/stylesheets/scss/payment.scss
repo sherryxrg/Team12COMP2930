@@ -1,40 +1,113 @@
 @import 'vars';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-body {
-  font-family: 'Montserrat';
-  margin: 0px;
-  padding: 0px;
+@media only screen and (min-width: 501px) {
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
+  }
+
+  #container {
+    font-family: 'montserrat';
+    height: 100vh;
+    @include allbg();
+    padding-top: 20px;
+    color: black;
+  }
+
+  #content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    @include diffuseshadow();
+  }
+
+  #page-title {
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #cvc-form {
+    padding: 20px;
+  }
+
+  #cvc-field {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px;
+    font-size: 14pt;
+  }
+
+  #pay-button {
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: $lavender;
+  }
 }
 
-#container {
-  height: 100vh;
-  @include allbg();
-  padding-top: 20px;
+@media only screen and (max-width: 500px) {
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
+  }
+
+  #container {
+    font-family: 'montserrat';
+    height: 100vh;
+    @include allbg();
+    padding-top: 20px;
+    color: black;
+    padding: 15px;
+  }
+
+  #content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px 5px 5px 5px;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    @include diffuseshadow();
+  }
+
+  #page-title {
+    padding: 10px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  #cvc-form {
+    padding: 20px;
+  }
+
+  #cvc-field {
+    height: 40px;
+    width: 100px;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px;
+    font-size: 14pt;
+  }
+
+  #pay-button {
+    margin: 0 auto;
+    margin-top: 30px;
+    background-color: $lavender;
+  }
 }
 
-#white-space {
-  padding-top: 10px;
-  background-color: white;
-  width: 500px;
-  height: 400px;
-  margin: 0 auto;
-  @include diffuseshadow();
-}
 
-#page-title {
-  padding: 10px;
-  font-size: 30px;
-  text-align: center;
-}
 
-.total{
-  pointer-events: none;
-}
-// bootstrap stuff
-
-.submit-button {
-  margin-top: 10px;
-}
 
 

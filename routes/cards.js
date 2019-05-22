@@ -27,9 +27,16 @@ router.post('/', async (req, res) => {
 router.get('/success', async (req, res) => {
   const cards = await Card.find();
   const newCard = cards[cards.length -1];
+  let user = req.session.currentUser;
+  let userName = {
+    first_name: titleize(user.first_name),
+    last_name: titleize(user.last_name),
+  };
   res.render('new_card_added', {
     title: 'Card Registered',
-    newCard
+    newCard,
+    user,
+    userName,
   });
 });
 
@@ -41,7 +48,7 @@ router.get('/all', async (req, res) => {
     let userName = {
       first_name: titleize(req.session.currentUser.first_name),
       last_name: titleize(req.session.currentUser.last_name),
-  };
+    };
     const cards = await Card.find({
       user: user._id
     });

@@ -2,15 +2,14 @@
 
 <nav id='nav-bar'>
   <div id='brand' class='section'><a href="/">Parked</a></div>
-
-  <% if (typeof user == 'undefined' || user == null) { %>
+      <% if (typeof user == 'undefined' || user == null) { %>
         <div id='login' class='section'>
           <a href="/login">Log In</a>
         </div>
         <div id='register' class='section'>
           <a href="/register">Register</a>
         </div>
-  <% } else { %> 
+      <% } else { %> 
         <div id='logout' class='section'>
           <a href="/auth/logout">Logout</a>
         </div>
@@ -22,3 +21,4 @@
         </div>
       <% } %>
 </nav>
+
