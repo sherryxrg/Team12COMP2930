@@ -14,37 +14,26 @@ mongoose.connect(process.env.DATABASE_URL, {
 
 // Home page
 router.get('/', function(req, res, next) {
-  res.render('index', {title: 'Parked'});
   if (req.session.currentUser) {
-  let user = req.session.currentUser;
+    let user = req.session.currentUser;
     let userName = {
-      first_name: titleize(req.session.currentUser.first_name),
-      last_name: titleize(req.session.currentUser.last_name),
+      first_name: titleize(user.first_name),
+      last_name: titleize(user.last_name),
     };
-  res.render('index', { 
-    title: 'Parked', 
-    user: req.session.currentUser, 
-    userName
-  });
+    res.render('index', {title: 'Parked',
+      user,
+      userName,
+    });
   }
+  res.render('index', {title: 'Parked'});
 });
 
 // Login page
 router.get('/login', (req, res) => {
-  res.render('login', {title: 'Login'});
-  let user = req.session.currentUser;
-  if (user) {
-    let userName = {
-      first_name: titleize(req.session.currentUser.first_name),
-      last_name: titleize(req.session.currentUser.last_name),
-    };
- res.render('login', {
-      user,
-      userName,
-      title: 'Login'
-    });
+  if (req.session.currentUser) {
+    res.redirect('/dashboard');
   } else {
-    res.redirect('/login');
+    res.render('login', {title: 'Login'});
   }
 
 });
@@ -82,7 +71,11 @@ router.get('/dashboard', async (req, res) => {
 
 // Register
 router.get('/register', (req, res) => {
-  res.render('register', { title: 'Register' });
+  if (req.session.currentUser) {
+    res.redirect('/dashboard');
+  } else {
+    res.render('register', { title: 'Register' });
+  }
 });
 
 // Payment
@@ -90,41 +83,42 @@ router.get('/payment', async (req, res) => {
   if (req.session.currentUser) {
     let user = req.session.currentUser;
     let userName = {
-      first_name: titleize(req.session.currentUser.first_name),
-      last_name: titleize(req.session.currentUser.last_name),
+      first_name: titleize(user.first_name),
+      last_name: titleize(user.last_name),
     };
-  let card = req.query.card;
-  console.log(req.query.card);
-  let vehicle = req.query.vehicle;
-  let lot = req.query.lot;
-  let total = req.query.total;
-  let rate_type = req.query['rate-type'];
-  let hours = req.query.hours;
-  console.log(vehicle);
-  if (card && vehicle) {
-    let c = await Card.findById(card);
-    let v = await Vehicle.findById(vehicle);
-    let l = await Lot.findOne({number: lot});
-    res.render('payment', {
-      user,
-      userName,
-      title: 'Payment',
-      card: c,
-      vehicle: v,
-      lot: l,
-      total,
-      rate_type,
-      hours
-    });
+    let card = req.query.card;
+    let vehicle = req.query.vehicle;
+    let lot = req.query.lot;
+    let total = req.query.total;
+    let rate_type = req.query['rate-type'];
+    let hours = req.query.hours;
+    if (card && vehicle) {
+      let c = await Card.findById(card);
+      let v = await Vehicle.findById(vehicle);
+      let l = await Lot.findOne({number: lot});
+      res.render('payment', {
+        user,
+        userName,
+        title: 'Payment',
+        card: c,
+        vehicle: v,
+        lot: l,
+        total,
+        rate_type,
+        hours
+      });
+    }
   }
-}
-
 });
 
 //Create Receipt
 router.post('/payment', async (req, res) => {
   let user = req.session.currentUser;
   if (user) {
+    let userName = {
+      first_name: titleize(user.first_name),
+      last_name: titleize(user.last_name),
+    };
     let receipt = new models.Receipt();
     receipt.vehicle = req.body.vehicle_id;
     receipt.card = req.body.card_id;
@@ -149,7 +143,9 @@ router.post('/payment', async (req, res) => {
     Receipt.find({ _id: receipt._id}).populate('vehicle').populate('card').populate('lot').exec((err, receipts) => {
       res.render('receipt', {
         title: 'Payment Success',
-        receipt: receipts[0]
+        receipt: receipts[0],
+        userName,
+        user,
       });
     });
   } else {
@@ -159,6 +155,7 @@ router.post('/payment', async (req, res) => {
 
 // Current Receipt
 router.get('/current', async (req, res) => {
+  const user = req.session.currentUser;
   let date = new Date();
   Receipt.find({
     end_time: {
@@ -170,7 +167,8 @@ router.get('/current', async (req, res) => {
     const receipt = docs[0];
     res.render('receipt', {
       title: 'Current Session',
-      receipt
+      receipt,
+      user
     });
   });
 });
@@ -179,9 +177,11 @@ router.get('/current', async (req, res) => {
 router.get('/payment_success', async (req, res) => {
   const receipts = await Receipt.find();
   const receipt = receipts[receipts.length - 1];
+  const user = req.session.currentUser;
   res.render('receipt', {
     title: 'Receipt',
-    receipt
+    receipt,
+    user
   });
 });
 
