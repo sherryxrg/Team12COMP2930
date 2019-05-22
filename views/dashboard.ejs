@@ -2,84 +2,86 @@
 <%- include('header') %>
 
 <div id='container'>
-    <div id='white-space'>
-      <div id="mapid"></div>
-      <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-      integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-      crossorigin=""></script>
-      <script src="javascripts/map.js"></script>
+  <%  if (typeof success != 'undefined' && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show">
+    <%= success %>
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+  </div>
+  <% } %>
+
+  <div id='content'>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+    <script src="javascripts/map.js"></script>
 
   <!-- bottom half of page after map -->
       <div id='outline'>
-    <!-- vehicle, cards -->
-        <div id='left-div'>
-          <div id='vehicle-box' class='boxes'>
-            <select class='dropdown'>
-              <option value='select' class='dropdown-opt'>Select Vehicle:</option>
-              <% for (var i = 0; i < vehicles.length; i++) { %>
-                <option value=<%= vehicles[i] %> class="dropdown-opt">
-                  <%= vehicles[i] %>
-                </option>
-              <% } %>
-            </select>
-            <a class='links' href='#'>+ Add a new vehicle</a>
-          </div>
-
-          <div id='payment-box' class='boxes'>
-            <select class='dropdown'>
-            <option value='select' class='dropdown-opt'>Select Card:</option>
-            <% for (var i = 0; i < cards.length; i++) { %>
-                <option value=<%= cards[i] %> class="dropdown-opt">
-                  <%= cards[i] %>
-                </option>
-              <% } %>
-            </select>
-            <a class='links' href='#'>+ Add a new card</a>
-          </div>
-
+        <form action='/payment' method='GET'>
+      <!-- vehicle, cards -->
+          <div id='left-div'>
+            <div id='vehicle-box' class='boxes'>
+              <select name='vehicle' class='dropdown' required>
+                <option value='select' class='dropdown-opt'>Select Vehicle *</option>
+                <% for (var i = 0; i < vehicles.length; i++) { %>
+                  <option value=<%= vehicles[i]._id %> class="dropdown-opt">
+                    <%= vehicles[i].nickname %>
+                  </option>
+                <% } %>
+              </select>
+              <br>
+              <a class='links' href='/vehicles/new'>+ Add a new vehicle</a>
+              <p style="display:inline;">|</p>
+              <a class='links' href='/vehicles'> Go to my vehicles</a>
+            </div>
+            <div id='card-box' class='boxes'>
+              <select name='card' class='dropdown' requireds>
+              <option name='card' value='select' class='dropdown-opt'>Select Card *</option>
+              <% for (var i = 0; i < cards.length; i++) { %>
+                  <option value=<%= cards[i]._id %> class="dropdown-opt">
+                    <%= cards[i].number %>
+                  </option>
+                <% } %>
+              </select>
+              <br>
+              <a class='links' href='/cards/new'>+ Add a new card</a>
+              <p style="display:inline;">|</p>
+              <a class='links' href='/cards/all'> Go to my cards</a>
+            </div>
+        </div>
+        <!-- time, lots -->
+        <div id='right-div'>
         <div id='current-lot' class='boxes'>
           <h1 class='heading'>Current lot:</h1>
-            <input type='text' pattern='[a-zA-Z0-9]'>
-              <div id='lot-validation'>
-                <p>If lot does not exist in database, display error here.</p>
-              </div>
+          <input type='text' id="lot-input" name='lot' readonly required>
+          <button id="find_lot">Select Closest Lot</button>
         </div>
-      </div>
-
-    <!-- parked until, type, pay -->
-      <div id='right-div'>
-        <div id='time-calc' class='boxes'>
+            <div id='time-calc' class='boxes'>
+          <select id="time-type" name='rate-type' class='dropdown'required>
+            <option value='rate-type' class='dropdown-opt'>Select rate type</option>
+            <option value='hourly' class='dropdown-opt'>hourly</option>
+            <option value='daily' class='dropdown-opt'>daily</option>
+          </select>
+          <br>
           <h1 class='heading'>How many hours would you like to park for?</h1>
-            <input id='parking-time' type='number'>
-            <input type='submit' value='check price'>
-            <script> var hours = document.getElementById("parking-time").value; </script>
-            <p><script> document.write(hours) </script></p>
+          <input id='parking-time' type='number' name='hours' value='0' min='0' max='24' required>
         </div>
-        <!-- if HOURLY is selected, make the time input REQUIRED -->
-        <!-- if DAILY is selected, display start, end time -->
-        <div id='rate-type' class='boxes'>
-          <h1 class='heading'>Type:</h1>
-            <select id="check-input">
-              <option value='hourly' name='hourly' class='dropdown-opt'>hourly</option>
-              <option value='daily' name='daily' class='dropdown-opt'>daily</option>
-            </select>
-        </div>
-
-        <!-- calculate hourly rates if HOURLY selected, display daily if DAILY selected  -->
         <div id='payment' class='boxes'>
           <h1 class='heading'>Amount due:</h1>
-              <h1 class='heading subhead'>HOURLY:</h1>
-              <!-- need to multiply by hours entered above -->
-              <%= ratesHourly[0]%>
-              <h1 class='heading subhead'>DAILY:</h1>
-              <%= ratesDaily[0] %>
+            <span>$</span><input id="total-due" type='text' value='0' name="total" readonly>
+            <h1 class='heading subhead'>HOURLY:</h1>
+            <!-- need to multiply by hours entered above -->
+            <span>$</span><span id="hourly">0.00</span>
+            <h1 class='heading subhead'>DAILY (until <%= date %>):</h1>
+            <span>$</span><span id="daily">0.00</span>
         </div>
-
-        <input id='pay-button' type='submit' value='Pay'>
-
+          <input id='pay-button' type='submit' value='Pay'>
+      </div>
+    </div>
+      </form>
       </div>
   </div>
 </div>
-
-
 <%- include('footer') %>
+

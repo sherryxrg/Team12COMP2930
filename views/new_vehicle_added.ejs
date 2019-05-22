@@ -1,13 +1,18 @@
 <%- include('header') -%>
 
-<link rel='stylesheet' href='/stylesheets/new_vehicle.css'/>
+<link rel='stylesheet' href='/stylesheets/new_vehicle_added.css'/>
 
-<div id="center-field">
+<div id="container">
   <div class="wrapper fadeInDown">
-    <div id="formContent">
+    <div id="content">
       <div class="label"><b>License Plate:</b> <%= newVehicle.license_plate %></div>
       <div class="label"><b>Nickname:</b> <%= newVehicle.nickname %></div>
       <div class="label"><b>Make/Brand:</b> <%= newVehicle.make %></div>
+    <hr>
+    </div>
+    <div id='back-buttons'>
+      <a href='#'><button>Return to My Vehicles</button></a>
+      <a href='/../dashboard'><button>Return to Dashboard</a>
     </div>
   </div>
 </div>

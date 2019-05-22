@@ -3,29 +3,24 @@
 <link rel='stylesheet' href='stylesheets/receipt.css'/>
 
   <div id="container">
-    <div id="center-field">
-        <div class="wrapper fadeInDown">
-          <div id="receiptContent">
-            <br>
-            <div class="status">Payment successful!</div>
-            <img class="icon" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-y2pDJfDRIQQymF9rQce0kMBYnLzFoOiBCtcUgddhrey_wrny">
-            <br>
-            <!-- Receipt Info -->
-            <div>
-              <div class="label"><b>Receipt Number:</b> <%= receipt._id %></div>
-              <div class="label"><b>License Plate:</b> <%= receipt.license_plate %></div>
-              <div class="label"><b>Lot:</b> ImPark #1234</div>
-              <div class="label"><b>Date:</b> May 8, 2019</div>
-              <div class="label"><b>Start Time:</b> <%= receipt.start_time.toLocaleString() %></div>
-              <div class="label"><b>End Time:</b> <%= receipt.end_time.toLocaleString() %></div>
-              <div class="label"><b>Card:</b> VISA ending in 4567</div>
-              <div class="label"><b>Total:</b> $<%= receipt.price %></div>
-            </div>
-            <br>
-          </div>
+    <div id='content-wrapper'>
+      <h1 id="title">Payment successful!</h1>
+      <div id="content" class='fadeInDown'>
+        <div id='summary'>
+          <div class="label"><b>Receipt Number:</b> <%= receipt._id %></div>
+          <div class="label"><b>License Plate:</b> <%= receipt.vehicle.license_plate %></div>
+          <div class="label"><b>Lot:</b> <%= receipt.lot.number %></div>
+          <div class="label"><b>Date:</b> <%= receipt.start_time.toLocaleDateString() %></div>
+          <div class="label"><b>Card:</b> <%= receipt.card.number %></div>
+          <div class="label"><b>Start Time:</b> <%= receipt.start_time.toLocaleTimeString() %></div>
+          <div class="label"><b>End Time:</b> <%= receipt.end_time.toLocaleTimeString() %></div>
+          <div class="label"><b>Total:</b> $<%= receipt.price %></div>
         </div>
+      </div>
+      <div id='back-buttons'>
+      <a href='/../dashboard'><button>Return to Dashboard</a>
     </div>
-
+    </div>
 </div>
 
 <%- include('footer') -%>

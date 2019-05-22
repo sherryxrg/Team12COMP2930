@@ -2,68 +2,36 @@
 
 <link rel='stylesheet' href='stylesheets/payment.css'/>
 <div id='container'>
-  <div id='white-space'>
-
-      <!--- bootstrap stuff -->
-       <div class="container">
-        <div class='row'>
-        <div class='col-md-2'></div>
-        <div class='col-md-4'>
-          <script src='https://js.stripe.com/v2/' type='text/javascript'></script>
-          <form accept-charset="UTF-8" action="/cards" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="pk_bQQaTxnaZlzv4FnnuZ28LFHccVSaj" id="payment-form" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓" /><input name="_method" type="hidden" value="PUT" /><input name="authenticity_token" type="hidden" value="qLZ9cScer7ZxqulsUWazw4x3cSEzv899SP/7ThPCOV8=" /></div>
-            <div class='form-row'>
-              <div class='col-xs-12 form-group required'>
-                <label class='control-label'>Name on Card</label>
-                <input name='name' class='form-control' size='4' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-xs-12 form-group card required'>
-                <label class='control-label'>Card Number</label>
-                <input name='number' autocomplete='off' class='form-control card-number' size='20' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-xs-4 form-group cvc required'>
-                <label class='control-label'>CVC</label>
-                <input name='cvc' autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
-              </div>
-              <div class='col-xs-4 form-group expiration required'>
-                <label class='control-label'>Expiration</label>
-                <input name='expiry_month' class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
-              </div>
-              <div class='col-xs-4 form-group expiration required'>
-                <label class='control-label'> </label>
-                <input name='expiry_year' class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12'>
-                <div class='form-control total btn btn-info'>
-                  Total:
-                  <span class='amount'>$12.34</span>
-                </div>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12 form-group'>
-                <input class='form-control btn btn-primary submit-button' value='Pay' type='submit'>
-              </div>
-            </div>
-            <div class='form-row'>
-              <div class='col-md-12 error form-group hide'>
-                <div class='alert-danger alert'>
-                  Please correct the errors and try again.
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class='col-md-4'></div>
+  <div id='content'>
+    <div id='card-summary'>
+      <div class="label"><b>Name:</b> <%= card.name %> </div>
+      <div class="label"><b>Number:</b> <%= card.number %> </div>
+      <div class="label"><b>Expiry Month:</b> <%= card.expiry_month %> </div>
+      <div class="label"><b>Expiry Year:</b> <%= card.expiry_year %> </div>
     </div>
-</div>
-
-       </div>
+    <hr>
+    <div id='vehicle-summary'>
+      <div class="label"><b>Nickame:</b> <%= vehicle.nickname %></div>
+      <div class="label"><b>License Plate:</b> <%= vehicle.license_plate %></div>
+      <div class="label"><b>Make:</b> <%= vehicle.make %></div>
+    </div>
+    <hr>
+    <div id='lot-summary'>
+      <div class="label"><b>Lot #: <%= lot.number %></b></div>
+      <div class="label"><b>Total: $<%= total %></b></div>
+    </div>
+    <form id='cvc-form' action='/payment' method='POST'>
+      <input type="hidden" value=<%= vehicle._id %> name='vehicle_id'>
+      <input type="hidden" value=<%= card._id %> name='card_id'>
+      <input type="hidden" value=<%= lot._id %> name='lot_id'>
+      <input type="hidden" value=<%= total %> name='total'>
+      <input type="hidden" value=<%= rate_type %> name='rate_type'>
+      <input type="hidden" value=<%= hours %> name='hours'>
+      
+      <input id='cvc-field' type='number' placeholder='cvc' name='cvc' minlength='3' maxlength='3' required>
+      <input id='pay-button' class='form-control btn btn-primary submit-button' value='Pay' type="submit">
+    </form>
+  </div>
 </div>
 
 

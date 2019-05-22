@@ -2,59 +2,151 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400');
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-#nav-bar {
-  font-family: 'Montserrat';
-  font-weight: 400;
-  width: 100%;
-  float: top;
-  height: 60px;
-  background-color: white;
-  text-align: right;
-  font-size: 12pt;
-  margin: 0px;
+/* Destop version */
+@media only screen and (min-width: 415px) {
+
+  #nav-bar {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    width: 100%;
+    float: top;
+    height: 60px;
+    background-color: white;
+    text-align: right;
+    font-size: 12pt;
+    margin: 0px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .section {
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin: 0px;
+    border-spacing: 0px;
+    float: right;
+  }
+
+  #current-user {
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    padding-right: 24px;
+    padding-left: 24px;
+    margin: 0px;
+    border-spacing: 0px;
+    float: right;
+    cursor: default;
+    user-select: none;
+  }
+
+  // brand
+  #brand {
+    float: left;
+    border-right-style: none;
+    font-family: 'karla';
+    font-weight: 700;
+    font-size: 20pt;
+    padding: 10px;
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  .section:hover {
+    background-color: rgba(255, 255, 255, 1.0);
+    border-bottom-style: solid;
+    border-bottom-color: #667db6;
+  }
+
+  a {
+    color: $navbar-title;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $navbar-title;
+    
+  }
 }
 
-a:hover {
-  text-decoration: none;
+/* Mobile responsive */
+@media only screen and (max-width: 450px) {
+
+  #nav-bar {
+    font-family: 'Montserrat';
+    font-weight: 400;
+    width: 100%;
+    float: top;
+    height: 60px;
+    background-color: white;
+    text-align: right;
+    font-size: 12pt;
+    margin: 0px;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .section {
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 0px;
+    border-spacing: 0px;
+    float: right;
+    padding-bottom: 0px;
+    font-size: 14px;
+  }
+
+  #current-user {
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    padding-right: 24px;
+    padding-left: 24px;
+    padding-bottom: 0px;
+    margin: 0px;
+    border-spacing: 0px;
+    float: right;
+    cursor: default;
+    user-select: none;
+    font-size: 14px;
+  }
+
+  // brand
+  #brand {
+    float: left;
+    border-right-style: none;
+    font-family: 'karla';
+    font-weight: 700;
+    font-size: 20pt;
+    padding: 10px;
+    padding-right: 0px;
+    padding-left: 24px;
+  }
+
+  .section:hover {
+    background-color: rgba(255, 255, 255, 1.0);
+    border-bottom-style: solid;
+    border-bottom-color: #667db6;
+  }
+
+  a {
+    color: $navbar-title;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: $navbar-title;
+    
+  }
 }
 
-.section {
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-  padding-right: 24px;
-  padding-left: 24px;
-  margin: 0px;
-  border-spacing: 0px;
-  float: right;
-}
-
-
-// brand
-#brand {
-  float: left;
-  border-right-style: none;
-  font-family: 'karla';
-  font-weight: 700;
-  font-size: 20pt;
-  padding: 10px;
-  padding-right: 24px;
-  padding-left: 24px;
-}
-
-.section:hover {
-  background-color: rgba(255, 255, 255, 1.0);
-  border-bottom-style: solid;
-  border-bottom-color: #667db6;
-}
-
-
-a {
-  color: $navbar-title;
-  text-decoration: none;
-}
-
-a:hover {
-  color: $navbar-title;
-  
-}

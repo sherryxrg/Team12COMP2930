@@ -14,6 +14,7 @@ router.post('/register', async (req, res) => {
       res.redirect('/register');
     } else {
       req.session.currentUser = user;
+      req.flash('success', 'You have successfully registered');
       res.redirect('/dashboard');
     }
   });
@@ -24,13 +25,17 @@ router.post('/', async (req, res) => {
   User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
     if (err) {
       console.error(err);
+      res.redirect('/login');
     }
+
     if(!user || !Bcrypt.compareSync(req.body.password, user.password)) {
-      console.log(user);
-      return res.status(400).send("Login failed.");
+      req.flash('success', 'Login failed');
+      res.redirect('/login');
+    } else {
+      req.session.currentUser = user;
+      req.flash('success', 'You have successfully logged in');
+      res.redirect('/dashboard');
     }
-    req.session.currentUser = user;
-    res.redirect('/dashboard');
   });
 });
 

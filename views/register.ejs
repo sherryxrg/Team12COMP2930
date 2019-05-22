@@ -2,29 +2,29 @@
 
 <link rel='stylesheet' href='stylesheets/register.css'/>
 
-<div id='my-container'>
-  <div id='base-container'>
-    <div id='top-container'>
-</div>
-  <div id='bottom-container'>
+<div id='container'>
+  <div id='content'>
+    
     <form action='/auth/register' method="POST">
-      <label>First Name:</label>
-      <input type="text" name="first_name">
-      <br/>
-      <label>Last Name:</label>
-      <input type="text" name="last_name">
-      <br/>
-      <label>Email:</label>
-      <input type="email" name="email">
-      <br/>
-      <label>Password:</label>
-      <input type="password" name="password">
-      <br/>
-
-      <input type="submit">
+      <div class='field-unit'>
+        <label>First Name:</label>
+        <input type="text" name="first_name">
+      </div>
+      <div class='field-unit'>
+        <label>Last Name:</label>
+        <input type="text" name="last_name">
+      </div>
+      <div class='field-unit'>
+        <label>Email:</label>
+        <input type="email" name="email">
+      </div>
+      <div class='field-unit'>
+        <label>Password:</label>
+        <input type="password" name="password">
+      </div>  
+        <input id='submit' type="submit" value="Create Account">
     </form>
   </div>
-
 </div>
 
 <%- include('footer') -%>

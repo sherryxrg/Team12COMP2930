@@ -1,66 +1,88 @@
 @import 'vars';
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
 @media only screen and (min-width: 501px) {
   #container {
     @include allbg();
     height: 100vh;
     font-family: 'Montserrat';
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   #content-wrapper {
     width: 500px;
-    height: auto;
+    height: 100%;
     margin: 0 auto;
     padding: 20px;
   }
 
   #content {
-    width: 500px;
     background-color: white;
-    height: auto;
+    width: 400px;
+    height: 500px;
     margin: 0 auto;
-    text-align: center;
     padding: 20px;
-    @include diffuseshadow();
+    overflow: auto;
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  #each-card {
+    background-color: white;
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    @include gentleoutline();
+  }
+
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
   }
 
   #title {
     color: white;
     font-size: 32pt;
+    margin-left: 28px;
   }
 
-
-  /* TYPOGRAPHY */
-  .submit-button {
-    background-color: $lavender;
-    transition: all 0.3s ease-in-out;
+  #back-buttons {
+    width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
   }
 
-  .submit-button:hover {
-    background-color: $navbar-title-2;
-  }
-
-  .submit-button:active {
-    transform: scale(0.95);
-  }
-
-  button, input[type=button], input[type=submit], input[type=reset]  {
-    background-color: $navbar-title-1;
-    border: none;
+  #back-buttons button {
     color: white;
-    padding: 10px 40px;
+    display: block;
     margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  #back-buttons a {
+    color: white;
+  }
+
+  button {
+    background-color: $lavender;
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 15px 80px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 5px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -68,11 +90,11 @@
     transition: all 0.3s ease-in-out;
   }
 
-  button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color:$navbar-title-2;
+  button:hover {
+    background-color: $navbar-title-2;
   }
 
-  button:active, input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  button {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
@@ -80,36 +102,8 @@
     transform: scale(0.95);
   }
 
-  button {
-    color: white;
-  }
-
-  button a {
-    color: white;
-  }
-
-  .label {
-    background-color: #f6f6f6;
-    text-align: left;
-    font-weight: 400;
-    border: none;
-    color: #0d0d0d;
-    padding: 15px 32px;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px;
-    width: 85%;
-    border: 2px solid #f6f6f6;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-  }
-
-  /* ANIMATIONS */
+  //Bootstrap ANIMATIONS
+  //Simple CSS3 Fade-in-down Animation 
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -151,60 +145,81 @@
     @include allbg();
     height: 100vh;
     font-family: 'Montserrat';
+    padding-bottom: 20px;
   }
 
   #content-wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
     margin: 0 auto;
     padding: 20px;
   }
 
   #content {
-    width: auto;
     background-color: white;
-    height: auto;
+    width: auto;
+    height: 500px;
     margin: 0 auto;
-    text-align: center;
     padding: 20px;
-    @include diffuseshadow();
+    overflow: auto;
+    border-radius: 5px 5px 5px 5px;
+  }
+
+  #each-card {
+    background-color: white;
+    height: 200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    @include gentleoutline();
+  }
+
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
   }
 
   #title {
     color: white;
     font-size: 32pt;
+    margin-left: 28px;
   }
 
-  /* TYPOGRAPHY */
-  .submit-button {
-    background-color: $lavender;
-    transition: all 0.3s ease-in-out;
+  #back-buttons {
+    width: 400px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: center;
   }
 
-  .submit-button:hover {
-    background-color: $navbar-title-2;
-  }
-
-  .submit-button:active {
-    transform: scale(0.95);
-  }
-
-  button, input[type=button], input[type=submit], input[type=reset]  {
-    background-color: $navbar-title-1;
-    border: none;
+  #back-buttons button {
     color: white;
-    padding: 10px 40px;
+    display: block;
     margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  #back-buttons a {
+    color: white;
+  }
+
+  button {
+    background-color: $lavender;
+    border: none;
+    width: 100%;
+    color: white;
+    padding: 15px 80px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 13px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    margin-left: 5px;
+    margin: 5px 20px 40px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -212,11 +227,11 @@
     transition: all 0.3s ease-in-out;
   }
 
-  button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-    background-color:$navbar-title-2;
+  button:hover {
+    background-color: $navbar-title-2;
   }
 
-  button:active, input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  button {
     -moz-transform: scale(0.95);
     -webkit-transform: scale(0.95);
     -o-transform: scale(0.95);
@@ -224,36 +239,8 @@
     transform: scale(0.95);
   }
 
-  button {
-    color: white;
-  }
-
-  button a {
-    color: white;
-  }
-
-  .label {
-    background-color: #f6f6f6;
-    text-align: left;
-    font-weight: 400;
-    border: none;
-    color: #0d0d0d;
-    padding: 15px 32px;
-    display: inline-block;
-    font-size: 16px;
-    margin: 5px;
-    width: 85%;
-    border: 2px solid #f6f6f6;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-  }
-
-  /* ANIMATIONS */
+  //Bootstrap ANIMATIONS
+  //Simple CSS3 Fade-in-down Animation 
   .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -288,4 +275,24 @@
       transform: none;
     }
   }
+
+  #back-buttons {
+    width: inherit;
+    padding: 0px;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 0px;
+  }
+
+  #back-buttons button {
+    color: white;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  #back-buttons a {
+    color: white;
+  }
 }
+
