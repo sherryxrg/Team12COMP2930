@@ -2,103 +2,210 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 
-#container {
-  font-family: 'Montserrat';
-  margin: 0px;
-  padding: 0px;
-  width: 100vw;
-  height: 100%;
-  @include allbg();
-  padding-bottom: 40px;
-  border-radius: 5px 5px 5px 5px;
-}
+@media only screen and (min-width: 501px) {
+  #container {
+    font-family: 'Montserrat';
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100%;
+    @include allbg();
+    padding-bottom: 40px;
+    border-radius: 5px 5px 5px 5px;
+  }
 
-#content-wrapper {
-  width: 500px;
-  height: auto;
-  margin: 0 auto;
-  padding: 20px;
-}
+  #content-wrapper {
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-#content {
-  background-color: white;
-  font-size: 14pt;
-  width: 500px;
-  height: auto;
-  margin: 0 auto;
-  padding: 20px;
-  @include diffuseshadow();
-}
+  #content {
+    background-color: white;
+    font-size: 14pt;
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    @include diffuseshadow();
+  }
 
-#each-vehicle {
-  margin: 10px;
-}
+  #each-vehicle {
+    margin: 10px;
+  }
 
-#delete {
-  text-align: right;
-}
+  #delete {
+    text-align: right;
+  }
 
-.label {
-  color: black;
-  display: block;
-  text-align: left;
-  font-size: 12pt;
-  font-weight: 400;
-}
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
+  }
 
-#title {
- color: white;
- font-size: 32pt;
-}
-
-// button styling
-button, input[type=button], input[type=submit], input[type=reset]  {
-  background-color: $navbar-title-1;
-  border: none;
+  #title {
   color: white;
-  padding: 10px 40px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  font-size: 12px;
-  -webkit-border-radius: 5px 5px 5px 5px;
-  border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 20px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  font-size: 32pt;
+  }
+
+  // button styling
+  button, input[type=button], input[type=submit], input[type=reset]  {
+    background-color: $navbar-title-1;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 20px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color:$navbar-title-2;
+  }
+
+  button:active, input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  #back-buttons {
+    width: inherit;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  #back-buttons button {
+    color: white;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 70px;
+  }
+
+  #back-buttons a {
+    color: white;
+  }
 }
 
-button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color:$navbar-title-2;
-}
+@media only screen and (max-width: 500px) {
+  #container {
+    font-family: 'Montserrat';
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+    height: 100%;
+    @include allbg();
+    padding-bottom: 40px;
+    padding-top: 50px;
+    padding: 10px;
+    border-radius: 5px 5px 5px 5px;
+  }
 
-button:active, input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-  -moz-transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
+  #content-wrapper {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-#back-buttons {
-  width: inherit;
-  padding: 10px;
-  display: inline-block;
-  text-align: center;
-}
+  #content {
+    background-color: white;
+    font-size: 14pt;
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+    @include diffuseshadow();
+  }
 
-#back-buttons button {
+  #each-vehicle {
+    margin: 10px;
+  }
+
+  #delete {
+    text-align: right;
+  }
+
+  .label {
+    color: black;
+    display: block;
+    text-align: left;
+    font-size: 12pt;
+    font-weight: 400;
+  }
+
+  #title {
   color: white;
-  margin: 5px;
-  margin-top: 20px;
-  margin-bottom: 70px;
-}
+  font-size: 32pt;
+  }
 
-#back-buttons a {
-  color: white;
+  // button styling
+  button, input[type=button], input[type=submit], input[type=reset]  {
+    background-color: $navbar-title-1;
+    border: none;
+    color: white;
+    padding: 10px 40px;
+    margin-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 20px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+
+  button:hover, input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+    background-color:$navbar-title-2;
+  }
+
+  button:active, input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+  }
+
+  #back-buttons {
+    width: inherit;
+    padding: 10px;
+    display: inline-block;
+    text-align: center;
+  }
+
+  #back-buttons button {
+    color: white;
+    margin: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  #back-buttons a {
+    color: white;
+  }
 }
 
